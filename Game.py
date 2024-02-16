@@ -4,7 +4,7 @@ Main Game Loop
 
 import pygame
 
-import constants
+import globalstuff
 import levels
 
 from player import Player
