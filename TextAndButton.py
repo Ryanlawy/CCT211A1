@@ -34,7 +34,7 @@ background = pygame.image.load("images/start_background2.jpg").convert()
 scale_background = pygame.transform.scale(background, (720, 720))
 
 # defining a font
-smallfont = pygame.font.SysFont('Corbel', 35)
+smallfont = pygame.font.SysFont('ariel', 35)
 
 # rendering a text written in
 # this font
@@ -48,7 +48,7 @@ white = (255, 255, 255)
 blue = (0, 0, 128)
 
 #display_surface = pygame.display.set_mode((X, Y))
-font = pygame.font.SysFont('dejavuserif', 100)
+font = pygame.font.SysFont('arial', 100)
 
 #['dejavuserif', 'dejavusansmono', 'dejavusans', 'arial']
 
