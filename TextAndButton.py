@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+import GlobalStuff
 
 # initializing the constructor
 pygame.init()
@@ -30,7 +30,7 @@ width = screen.get_width()
 height = screen.get_height()
 
 # background picture
-background = pygame.image.load("start_background2.jpg").convert()
+background = pygame.image.load("images/start_background2.jpg").convert()
 scale_background = pygame.transform.scale(background, (720, 720))
 
 # defining a font

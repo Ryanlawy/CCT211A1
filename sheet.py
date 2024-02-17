@@ -1,6 +1,6 @@
 import pygame
 
-import constants
+
 
 
 class SpriteSheet(object):

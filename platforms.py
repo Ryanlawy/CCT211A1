@@ -12,15 +12,22 @@ Platform Type:
 
 """
 
-
-
 class Platform(pygame.sprite.Sprite):
     """Platform"""
 
     def __init__(self, sprite_sheet_data):
         """"""
         pygame.sprite.Sprite.__init__(self)
-
         # platform
+        self.image =
 
 
+
+class LeftToRightPlatform(Platform):
+    """ """
+
+
+
+
+class UpAndDownPlatform(Platform):
+    """ """
