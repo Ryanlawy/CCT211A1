@@ -105,11 +105,15 @@ class Level_1(Level):
         self.platform_list.add(block)
 
         # Add the ground to the map
-        """
+        
         ground = platforms.Ground()
-        ground.rect.x = 0
-        ground.rect.y = 650
+        ground.rect.x = 0  # Start at the leftmost part of the level
+        ground.rect.y = 650  # Position at the bottom
         ground.player = self.player
         ground.level = self
+        # Adjust the width to match the level width
+        ground.image = pygame.transform.scale(ground.image, (3000, ground.image.get_height()))
         self.platform_list.add(ground)
-        """
+    
+
+        

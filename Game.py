@@ -14,6 +14,7 @@ import TextAndButton
 import level
 from info import GameInfo
 from ghost import Ghost
+import platforms
 
 from player import Player
 
@@ -86,6 +87,7 @@ def main():
 
         # Update game info
         game_info.update(delta)
+
 
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.x >= 500:

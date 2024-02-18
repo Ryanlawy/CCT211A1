@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()  # Initialize the sprite superclass
         self.x = 60
         self.y = 400
-        self.sprite_sheet_image = pygame.image.load('images/walk.jpg').convert_alpha()  # load image
+        self.sprite_sheet_image = pygame.image.load('images/walktry.png').convert_alpha()  # load image
         self.change_x = 0  # Movement along X
         self.change_y = 0  # Movement along Y
         self.walking_frames_left = []
@@ -34,12 +34,12 @@ class Player(pygame.sprite.Sprite):
             # Extract and scale each frame individually
             frame = self.extract_sprite(i * 824, 0, sprite_width, sprite_height)
             scaled_frame = pygame.transform.scale(frame, (100, 150))  # Scale the frame to desired size
-            scaled_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the original frame
+            scaled_frame.set_colorkey((255, 0, 0))  # Set white to transparent for the original frame
             self.walking_frames_right.append(scaled_frame)
 
             # Flip the scaled frame for walking left, then apply the color key to the flipped frame
             flipped_frame = pygame.transform.flip(scaled_frame, True, False)  # Flip the frame
-            flipped_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the flipped frame
+            flipped_frame.set_colorkey((255, 0, 0))  # Set white to transparent for the flipped frame
             self.walking_frames_left.append(flipped_frame)
 
 
