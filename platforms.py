@@ -15,20 +15,38 @@ Platform Type:
 #   Height of sprite
 
 # Grass
-GRASS_PLATFORM = (576, 720, 100, 70)
+GRASS_PLATFORM = "Grass"
+
+#wall
+Wall = "Wall"
 
 
 class Platform(pygame.sprite.Sprite):
     """Platform"""
 
-    def __init__(self):
+    def __init__(self, type):
         """"""
         pygame.sprite.Sprite.__init__(self)
         # platform
-        image = pygame.image.load("images/platformgrass.jpg").convert()
-        scale_image = pygame.transform.scale(image, (100, 70))
-        self.image = scale_image
-        #self.image = image
+        if type == "Grass":
+            image = pygame.image.load("images/platformgrass.jpg").convert()
+            scale_image = pygame.transform.scale(image, (100, 70))
+            self.image = scale_image
+            #self.image = image
+
+        elif type == "Wall":
+            image = pygame.image.load("images/wall.jpg").convert()
+            scale_image = pygame.transform.scale(image, (70, 70))
+            self.image = scale_image
+        elif type == "Water":
+            image = pygame.image.load("images/water.jpg").convert()
+            scale_image = pygame.transform.scale(image, (70, 70))
+            self.image = scale_image
+        else:
+            image = pygame.image.load("images/fire.jpg").convert()
+            scale_image = pygame.transform.scale(image, (70, 70))
+            self.image = scale_image
+
         self.rect = self.image.get_rect()
 
 
@@ -86,7 +104,7 @@ class MovingPlatform(Platform):
 class Wall(Platform):
     """ Wall"""
     def __init__(self):  # Your parameters here
-        super().__init__()
+        super().__init__("wall")
         self.image = pygame.image.load("images/wall.jpg").convert()
 
 
@@ -94,21 +112,21 @@ class Wall(Platform):
 class FirePlatform(Platform):
     """ A platform that kills(return to the beginning) the player"""
     def __init__(self):  # Your parameters here
-            super().__init__()
+            super().__init__("Fire")
             self.image = pygame.image.load("images/fire.jpg").convert()
-
 
 
 class WaterPlatform(Platform):
     """ A platform that slows the player"""
     def __init__(self):  # Your parameters here
-            super().__init__()
+            super().__init__("Water")
             self.image = pygame.image.load("images/water.jpg").convert()
-
 
 class Ground(Platform):
     def __init__(self):  # Your parameters here
-        super().__init__()
+        super().__init__("Grass")
         image1 = pygame.image.load("images/platformgrass.jpg").convert()
         scale_image = pygame.transform.scale(image1, (1000, 70))
         self.image = scale_image
+
+# class House(Platform):
