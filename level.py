@@ -97,8 +97,8 @@ class Level_1(Level):
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
                  ]
 
-        step_on = [["Water", 800, 250], ["Water", 1000, 250],
-                   ["Water", 1760, 250], ["Water", 1760, 250],
+        step_on = [["Water", 800, 250], ["Water", 870, 250],
+                   ["Water", 1000, 250], ["Water", 1760, 250],
                    ["Water", 1200, 250], ["Water", 1300, 250],]
 
 
