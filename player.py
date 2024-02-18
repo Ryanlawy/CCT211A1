@@ -65,13 +65,14 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         # Only jump if on the ground
-        self.rect.y += 2  # Move down a bit to check if the player is on the ground
-        platform_hit_list = pygame.sprite.spritecollide(self, self.level.level, False)
-        self.rect.y -= 2  # Move back up
+        # self.rect.y += 2  # Move down a bit to check if the player is on the ground
+        # platform_hit_list = pygame.sprite.spritecollide(self, self.level.level, False)
+        # self.rect.y -= 2  # Move back up
 
-        # If it's ok to jump (i.e., on the ground), then jump
-        if len(platform_hit_list) > 0:
-            self.change_y = -10  # Upward movement; adjust as necessary for jump strength
+        # # If it's ok to jump (i.e., on the ground), then jump
+        # if len(platform_hit_list) > 0:
+        #     self.change_y = -10  # Upward movement; adjust as necessary for jump strength
+        self.change_y =-10
 
 
 

@@ -1,6 +1,7 @@
 import pygame
-import sys
-import globalstuff
+import Game
+import os
+from subprocess import call
 
 # initializing the constructor
 pygame.init()
@@ -71,9 +72,11 @@ while True:
             # button the game is terminated
             if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
                 pygame.quit()
-            if width / 2 <= mouse[0] <= width / 4 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
-                # start the game
-                self.start
+
+            if width / 4 <= mouse[0] <= width / 4 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
+                #start the game
+                #call(["python", "Game.py"])
+                Game.main()
 
 
     # background
@@ -81,7 +84,6 @@ while True:
     screen.blit(scale_background, (0, 0))
 
     # stores the (x,y) coordinates into
-    # the variable as a tuple
     mouse = pygame.mouse.get_pos()
 
     # if mouse is hovered on a button it
@@ -89,9 +91,10 @@ while True:
     if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
         pygame.draw.rect(screen, color_light, [
             width / 2, height / 2, 140, 40])
-    elif width / 4 <= mouse[0] <= width / 4 + 140 and height / 4 <= mouse[1] <= height / 4 + 40:
+
+    elif width / 4 <= mouse[0] <= width / 4 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
         pygame.draw.rect(screen, color_light, [
-            width / 4, height / 4, 140, 40])
+            width / 4, height / 2, 140, 40])
 
     else:
         pygame.draw.rect(screen, color_dark, [
