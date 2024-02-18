@@ -17,13 +17,13 @@ class Ghost(pygame.sprite.Sprite):
         self.velocity = velocity
         self.dir = pygame.math.Vector2(startdir).normalize()
         # Animation of ghost
-        image1 = pygame.image.load("images/ghost1.jpg").convert()
+        image1 = pygame.image.load("images/ghost1.png").convert()
         image1 = pygame.transform.scale(image1, (50, 50))
         self.moving_frame.append(image1)
-        image = pygame.image.load("images/ghost2.jpg").convert()
+        image = pygame.image.load("images/ghost2.png").convert()
         image_c = pygame.transform.scale(image, (50, 50))
         self.moving_frame.append(image_c)
-        image = pygame.image.load("images/ghost3.jpg").convert()
+        image = pygame.image.load("images/ghost3.png").convert()
         image_c = pygame.transform.scale(image, (50, 50))
         self.moving_frame.append(image_c)
         self.image = image1
