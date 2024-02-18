@@ -24,6 +24,7 @@ def main():
     # Set the height and width of the screen
     size = [720, 720]
     screen = pygame.display.set_mode(size)
+    game_info = GameInfo(screen, 120, 3)
 
     pygame.display.set_caption("Platformer with sprite sheets")
 
@@ -50,13 +51,14 @@ def main():
     done = False
 
     # Ghost start
-    ghost = Ghost((250, 250), 3, (3, 3))
-    active_sprite_list.add(ghost)
+    # ghost = Ghost((250, 250), 3, (3, 3))
+    # active_sprite_list.add(ghost)
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
     # -------- Main Program Loop -----------
     while not done:
+        delta = clock.tick(60) / 1000.0
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
                 done = True # Flag that we are done so we exit this loop
@@ -80,6 +82,9 @@ def main():
 
         # Update items in the level
         current_level.update()
+
+        # Update game info
+        game_info.update(delta)
 
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.x >= 500:
@@ -105,6 +110,7 @@ def main():
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
+        game_info.draw()  # Draw the game info
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
