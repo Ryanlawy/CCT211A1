@@ -47,7 +47,7 @@ class Platform(pygame.sprite.Sprite):
             scale_image = pygame.transform.scale(image, (70, 70))
             self.image = scale_image
         else:
-            image = pygame.image.load("images/house.jpg").convert()
+            image = pygame.image.load("images/house.png")
             scale_image = pygame.transform.scale(image, (500, 500))
             self.image = scale_image
 
