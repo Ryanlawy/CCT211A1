@@ -15,6 +15,7 @@ import level
 from info import GameInfo
 from ghost import Ghost
 import platforms
+from enemy import Enemy
 
 from player import Player
 
@@ -52,8 +53,9 @@ def main():
     done = False
 
     # Ghost start
-    ghost = Ghost((250, 250), 3, (player.rect.x, player.rect.y), player)
+    ghost = Ghost((250, 250), 3, (250, 250))
     active_sprite_list.add(ghost)
+
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
@@ -63,7 +65,7 @@ def main():
         delta = clock.tick(60) / 1000.0
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
-                done = True # Flag that we are done so we exit this loop
+                done = True
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -87,6 +89,9 @@ def main():
 
         # Update game info
         game_info.update(delta)
+
+        # chase
+        ghost.move_towards_player(player)
 
 
         # If the player gets near the right side, shift the world left (-x)
