@@ -150,6 +150,8 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
+
+
         # step on water
         block_hit_list1 = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
         for block in block_hit_list1:

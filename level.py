@@ -121,10 +121,10 @@ class Level_1(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        for platform in step_on:
-            block = platforms.Platform(platform[0])
-            block.rect.x = platform[1]
-            block.rect.y = platform[2]
+        for p in step_on:
+            block = platforms.Platform(p[0])
+            block.rect.x = p[1]
+            block.rect.y = p[2]
             block.player = self.player
             self.stepon_list.add(block)
 
@@ -164,7 +164,7 @@ class Level_2(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = 2500
+        self.level_limit = -1600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
