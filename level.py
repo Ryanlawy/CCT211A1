@@ -81,7 +81,7 @@ class Level_1(Level):
                  ["Grass", 600, 250], ["Grass", 700, 250],
                  ["Grass", 800, 250], ["Grass", 900, 250],
                  ["Grass", 1000, 250], ["Grass", 1100, 250],
-                 ["Grass", 1200, 100], ["Grass", 1300, 100],
+                 ["Grass", 1200, 250], ["Grass", 1300, 250],
 
                 # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
@@ -97,8 +97,8 @@ class Level_1(Level):
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
                  ]
 
-        step_on = [["Water", 800, 250], ["Water", 1000, 250],
-                   ["Water", 1760, 250], ["Water", 1760, 250],
+        step_on = [["Water", 800, 250], ["Water", 870, 250],
+                   ["Water", 1000, 250], ["Water", 1760, 250],
                    ["Water", 1200, 250], ["Water", 1300, 250],]
 
 
