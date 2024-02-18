@@ -3,11 +3,15 @@ import pygame
 # import GlobalStuff
 # from spritesheet_functions import SpriteSheet
 import platforms
+import level
 
 
 screen_width = 720
 screen_height = 720
+
 class Player(pygame.sprite.Sprite):
+    # level bumper
+    level = None
     def __init__(self, x, y):
         super().__init__()  # Initialize the sprite superclass
         x = 60
@@ -21,7 +25,7 @@ class Player(pygame.sprite.Sprite):
         sprite_width = 880  # Width of a single sprite frame in the sheet
         sprite_height = 1550  # Height of a single sprite frame in the sheet
         num_frames = 6  # Total number of frames in the sprite sheet
-        
+
 
         for i in range(num_frames):
             # Extract and scale each frame individually
@@ -35,7 +39,7 @@ class Player(pygame.sprite.Sprite):
         self.image = self.walking_frames_right[self.current_frame]  # Initialize with the first frame
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect(x=x, y=y)
-    
+
     def extract_sprite(self, x, y, width, height):
         """Extracts a single sprite from the sprite sheet."""
         frame = pygame.Surface((width, height), pygame.SRCALPHA)
@@ -53,17 +57,17 @@ class Player(pygame.sprite.Sprite):
     def stop(self):
         """Stops the player's movement."""
         self.change_x = 0
-    
+
     def jump(self):
         # Only jump if on the ground
         self.rect.y += 2  # Move down a bit to check if the player is on the ground
-        platform_hit_list = pygame.sprite.spritecollide(self, self.platforms, False)
+        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         self.rect.y -= 2  # Move back up
 
         # If it's ok to jump (i.e., on the ground), then jump
         if len(platform_hit_list) > 0:
             self.change_y = -10  # Upward movement; adjust as necessary for jump strength
-        
+
 
 
 
@@ -85,9 +89,9 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.top < 0:
             self.change_y = 0
             self.rect.top =0
-        
 
-    
+
+
 
 # Example usage
 def main():
@@ -153,7 +157,7 @@ if __name__ == "__main__":
 #     # List of sprites we can bump against
 #     level = None
 #     def get_image(self, x, y, width, height):
-    
+
 #         # Create a new blank image
 #         image = pygame.Surface([width, height], pygame.SRCALPHA).convert_alpha()
 #         # Copy the sprite from the large sheet onto the smaller image
@@ -164,7 +168,7 @@ if __name__ == "__main__":
 #         return image
 
 
-#     # -- Methods 
+#     # -- Methods
 #     def __init__(self):
 #         """ Constructor function """
 

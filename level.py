@@ -1,5 +1,5 @@
 import pygame
-import platform
+import platforms
 
 
 class Level():
@@ -69,31 +69,31 @@ class Level_1(Level):
         self.level_limit = -2500
 
         # Array with type of platform, and x, y location of the platform.
-        level = [ [platform.GRASS_PLATFORM, 500, 500],
-                  [platform.GRASS_PLATFORM, 570, 500],
-                  [platform.GRASS_PLATFORM, 640, 500],
-                  [platform.GRASS_PLATFORM, 800, 400],
-                  [platform.GRASS_PLATFORM, 870, 400],
-                  [platform.GRASS_PLATFORM, 940, 400],
-                  [platform.GRASS_PLATFORM, 1000, 500],
-                  [platform.GRASS_PLATFORM, 1070, 500],
-                  [platform.GRASS_PLATFORM, 1140, 500],
-                  [platform.GRASS_PLATFORM, 1120, 280],
-                  [platform.GRASS_PLATFORM, 1190, 280],
-                  [platform.GRASS_PLATFORM, 1260, 280],
+        level = [ [platforms.GRASS_PLATFORM, 500, 500],
+                  [platforms.GRASS_PLATFORM, 570, 500],
+                  [platforms.GRASS_PLATFORM, 640, 500],
+                  [platforms.GRASS_PLATFORM, 800, 400],
+                  [platforms.GRASS_PLATFORM, 870, 400],
+                  [platforms.GRASS_PLATFORM, 940, 400],
+                  [platforms.GRASS_PLATFORM, 1000, 500],
+                  [platforms.GRASS_PLATFORM, 1070, 500],
+                  [platforms.GRASS_PLATFORM, 1140, 500],
+                  [platforms.GRASS_PLATFORM, 1120, 280],
+                  [platforms.GRASS_PLATFORM, 1190, 280],
+                  [platforms.GRASS_PLATFORM, 1260, 280],
                   ]
 
 
         # Go through the array above and add platforms
         for platform in level:
-            block = platform.Platform(0)
+            block = platforms.Platform()
             block.rect.x = platform[1]
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
 
         # Add a custom moving platform
-        block = platform.MovingPlatform(platform.GRASS_PLATFORM)
+        block = platforms.MovingPlatform()
         block.rect.x = 1350
         block.rect.y = 280
         block.boundary_left = 1350
