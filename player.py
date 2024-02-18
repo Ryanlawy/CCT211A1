@@ -25,19 +25,24 @@ class Player(pygame.sprite.Sprite):
         sprite_width = 880  # Width of a single sprite frame in the sheet
         sprite_height = 1550  # Height of a single sprite frame in the sheet
         num_frames = 6  # Total number of frames in the sprite sheet
+        
 
 
         for i in range(num_frames):
             # Extract and scale each frame individually
             frame = self.extract_sprite(i * 824, 0, sprite_width, sprite_height)
             scaled_frame = pygame.transform.scale(frame, (100, 150))  # Scale the frame to desired size
+            scaled_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the original frame
             self.walking_frames_right.append(scaled_frame)
-            # For walking left, flip the scaled frame
-            self.walking_frames_left.append(pygame.transform.flip(scaled_frame, True, False))
-        WHITE = (255, 255, 255)
+            
+            # Flip the scaled frame for walking left, then apply the color key to the flipped frame
+            flipped_frame = pygame.transform.flip(scaled_frame, True, False)  # Flip the frame
+            flipped_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the flipped frame
+            self.walking_frames_left.append(flipped_frame)
 
-        self.image = self.walking_frames_right[self.current_frame]  # Initialize with the first frame
-        self.image.set_colorkey(WHITE)
+                
+
+        self.image = self.walking_frames_right[self.current_frame]
         self.rect = self.image.get_rect(x=x, y=y)
 
     def extract_sprite(self, x, y, width, height):
@@ -61,7 +66,7 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         # Only jump if on the ground
         self.rect.y += 2  # Move down a bit to check if the player is on the ground
-        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        platform_hit_list = pygame.sprite.spritecollide(self, self.level.level, False)
         self.rect.y -= 2  # Move back up
 
         # If it's ok to jump (i.e., on the ground), then jump
