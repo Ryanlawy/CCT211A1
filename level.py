@@ -70,18 +70,18 @@ class Level_1(Level):
 
         # Array with type of platform, and x, y location of the platform.
 
-        level = [[platforms.GRASS_PLATFORM, 500, 500],
-                  [platforms.GRASS_PLATFORM, 570, 500],
-                  [platforms.GRASS_PLATFORM, 640, 500],
-                  [platforms.GRASS_PLATFORM, 800, 400],
-                  [platforms.GRASS_PLATFORM, 870, 400],
-                  [platforms.GRASS_PLATFORM, 940, 400],
-                  [platforms.GRASS_PLATFORM, 1000, 500],
-                  [platforms.GRASS_PLATFORM, 1070, 500],
-                  [platforms.GRASS_PLATFORM, 1140, 500],
-                  [platforms.GRASS_PLATFORM, 1120, 280],
-                  [platforms.GRASS_PLATFORM, 1190, 280],
-                  [platforms.GRASS_PLATFORM, 1260, 280],
+        level = [[platforms, 500, 500],
+                  [platforms, 570, 500],
+                  [platforms, 640, 500],
+                  [platforms, 800, 400],
+                  [platforms, 870, 400],
+                  [platforms, 940, 400],
+                  [platforms, 1000, 500],
+                  [platforms, 1070, 500],
+                  [platforms, 1140, 500],
+                  [platforms, 1120, 280],
+                  [platforms, 1190, 280],
+                  [platforms, 1260, 280],
                  ]
 
 
@@ -93,7 +93,7 @@ class Level_1(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        # Add a custom moving platform
+        # Add a moving platform
         block = platforms.MovingPlatform()
         block.rect.x = 1350
         block.rect.y = 280
@@ -105,7 +105,7 @@ class Level_1(Level):
         self.platform_list.add(block)
 
         # Add the ground to the map
-        
+
         ground = platforms.Ground()
         ground.rect.x = 0  # Start at the leftmost part of the level
         ground.rect.y = 650  # Position at the bottom
@@ -114,6 +114,6 @@ class Level_1(Level):
         # Adjust the width to match the level width
         ground.image = pygame.transform.scale(ground.image, (3000, ground.image.get_height()))
         self.platform_list.add(ground)
-    
 
-        
+
+

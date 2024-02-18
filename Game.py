@@ -27,7 +27,6 @@ def main():
     size = [720, 720]
     screen = pygame.display.set_mode(size)
     game_info = GameInfo(screen, 120)
-
     pygame.display.set_caption("Platformer with sprite sheets")
 
     # Create the player
@@ -60,6 +59,7 @@ def main():
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
+    
 
     # -------- Main Program Loop -----------
     while not done:

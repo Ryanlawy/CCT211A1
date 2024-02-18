@@ -15,13 +15,7 @@ Platform Type:
 #   Height of sprite
 
 # Grass
-GRASS_PLATFORM = (576, 720, 70, 70)
-# Fire
-Fire_PLATFORM = (432, 720, 70, 40)
-#water
-Water_PLATFORM = (432, 720, 70, 40)
-# Ground
-Ground_PLATFORM = (0, 650, 70, 1000)
+GRASS_PLATFORM = (576, 720, 100, 70)
 
 
 class Platform(pygame.sprite.Sprite):
