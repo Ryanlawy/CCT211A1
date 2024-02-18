@@ -79,14 +79,16 @@ class Player(pygame.sprite.Sprite):
 
 
     def update(self):
-        """Updates the player's position and simulates gravity."""
-        self.rect.x += self.change_x
-        self.rect.y += self.change_y
-        self.current_frame = (self.current_frame + 1) % len(self.walking_frames_right)
-        if self.change_x>0:
-            self.image = self.walking_frames_right[self.current_frame]
-        elif self.change_x<0:
-            self.image = self.walking_frames_left[self.current_frame]
+        
+        """check for collision with platforms"""
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+        # If moving right, set our right side to the left side of the item we hit
+            if self.change_x > 0:
+                self.rect.right = block.rect.left
+            elif self.change_x < 0:
+                # Otherwise if moving left, do the opposite.
+                self.rect.left = block.rect.right
 
             # Gravity
         self.change_y += 0.35  # Adjust the gravity strength as needed
@@ -96,6 +98,26 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.top < 0:
             self.change_y = 0
             self.rect.top =0
+        
+        # Check for collision with platforms during vertical movement
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+            # Reset our position based on the top/bottom of the object.
+            if self.change_y > 0:
+                self.rect.bottom = block.rect.top
+            elif self.change_y < 0:
+                self.rect.top = block.rect.bottom
+            # Stop vertical movement
+            self.change_y = 0
+        
+        """Updates the player's position and simulates gravity."""
+        self.rect.x += self.change_x
+        self.rect.y += self.change_y
+        self.current_frame = (self.current_frame + 1) % len(self.walking_frames_right)
+        if self.change_x>0:
+            self.image = self.walking_frames_right[self.current_frame]
+        elif self.change_x<0:
+            self.image = self.walking_frames_left[self.current_frame]
 
 
 

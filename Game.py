@@ -40,6 +40,7 @@ def main():
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
+    
 
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
