@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+import globalstuff
 
 # initializing the constructor
 pygame.init()
@@ -30,11 +30,11 @@ width = screen.get_width()
 height = screen.get_height()
 
 # background picture
-background = pygame.image.load("start_background2.jpg").convert()
+background = pygame.image.load("images/start_background2.jpg").convert()
 scale_background = pygame.transform.scale(background, (720, 720))
 
 # defining a font
-smallfont = pygame.font.SysFont('Corbel', 35)
+smallfont = pygame.font.SysFont('ariel', 35)
 
 # rendering a text written in
 # this font
@@ -48,7 +48,7 @@ white = (255, 255, 255)
 blue = (0, 0, 128)
 
 #display_surface = pygame.display.set_mode((X, Y))
-font = pygame.font.SysFont('dejavuserif', 100)
+font = pygame.font.SysFont('arial', 100)
 
 #['dejavuserif', 'dejavusansmono', 'dejavusans', 'arial']
 
@@ -76,8 +76,8 @@ while True:
                 self.start
 
 
-    # fills the screen with a color
-    screen.fill((0, 0, 0))
+    # background
+    # screen.fill((0, 0, 0))
     screen.blit(scale_background, (0, 0))
 
     # stores the (x,y) coordinates into
