@@ -1,6 +1,6 @@
 import pygame
 import sys
-import GlobalStuff
+import globalstuff
 
 # initializing the constructor
 pygame.init()
@@ -76,8 +76,8 @@ while True:
                 self.start
 
 
-    # fills the screen with a color
-    screen.fill((0, 0, 0))
+    # background
+    # screen.fill((0, 0, 0))
     screen.blit(scale_background, (0, 0))
 
     # stores the (x,y) coordinates into

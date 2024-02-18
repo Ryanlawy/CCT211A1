@@ -1,69 +1,97 @@
 import pygame
 # from pygame.sprite import _Group
 # import GlobalStuff
-# from platforms import MovingPlatform
 # from spritesheet_functions import SpriteSheet
+import platforms
 
+
+screen_width = 720
+screen_height = 720
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()  # Initialize the sprite superclass
         x = 60
         y = 400
-        original_image = pygame.image.load('images/walk1.png').convert_alpha()  # load image
-        self.image = pygame.transform.scale(original_image, (100, 150))
-        self.rect = self.image.get_rect()  # Get the rectangular area of the Surface
-        self.rect.x = x  # Initial X position
-        self.rect.y = y  # Initial Y position
+        self.sprite_sheet_image = pygame.image.load('images/walk.jpg').convert_alpha()  # load image
         self.change_x = 0  # Movement along X
         self.change_y = 0  # Movement along Y
+        self.walking_frames_left = []
+        self.walking_frames_right = []
+        self.current_frame = 0
+        sprite_width = 880  # Width of a single sprite frame in the sheet
+        sprite_height = 1550  # Height of a single sprite frame in the sheet
+        num_frames = 6  # Total number of frames in the sprite sheet
+        
 
-    def update(self):
-        """Update the player's position."""
-        self.rect.x += self.change_x
-        self.rect.y += self.change_y
+        for i in range(num_frames):
+            # Extract and scale each frame individually
+            frame = self.extract_sprite(i * 824, 0, sprite_width, sprite_height)
+            scaled_frame = pygame.transform.scale(frame, (100, 150))  # Scale the frame to desired size
+            self.walking_frames_right.append(scaled_frame)
+            # For walking left, flip the scaled frame
+            self.walking_frames_left.append(pygame.transform.flip(scaled_frame, True, False))
+        WHITE = (255, 255, 255)
+
+        self.image = self.walking_frames_right[self.current_frame]  # Initialize with the first frame
+        self.image.set_colorkey(WHITE)
+        self.rect = self.image.get_rect(x=x, y=y)
+    
+    def extract_sprite(self, x, y, width, height):
+        """Extracts a single sprite from the sprite sheet."""
+        frame = pygame.Surface((width, height), pygame.SRCALPHA)
+        frame.blit(self.sprite_sheet_image, (-110, 0), (x, y, width, height))
+        return frame
 
     def go_left(self):
         """Moves the player to the left."""
-        self.change_x = -5
+        self.change_x = -8
 
     def go_right(self):
         """Moves the player to the right."""
-        self.change_x = 5
+        self.change_x = 8
 
     def stop(self):
         """Stops the player's movement."""
         self.change_x = 0
     
     def jump(self):
-        """Makes the player jump if they are on the ground."""
-        self.rect.y += 1  # Move down a bit to check if the player is on the ground
-        hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        self.rect.y -= 1  # Move back up
+        # Only jump if on the ground
+        self.rect.y += 2  # Move down a bit to check if the player is on the ground
+        platform_hit_list = pygame.sprite.spritecollide(self, self.platforms, False)
+        self.rect.y -= 2  # Move back up
 
-        # If it's ok to jump, set our speed upwards
-        if len(hit_list) > 0 or self.rect.bottom >= screen_height:
-            self.change_y = -10  # Adjust the jump strength as needed
+        # If it's ok to jump (i.e., on the ground), then jump
+        if len(platform_hit_list) > 0:
+            self.change_y = -10  # Upward movement; adjust as necessary for jump strength
+        
 
 
-def update(self):
-    """Updates the player's position and simulates gravity."""
-    self.rect.x += self.change_x
-    self.rect.y += self.change_y
 
-    # Gravity
-    self.change_y += 0.35  # Adjust the gravity strength as needed
-    if self.rect.bottom > screen_height:
-        self.change_y = 0
-        self.rect.bottom = screen_height
+    def update(self):
+        """Updates the player's position and simulates gravity."""
+        self.rect.x += self.change_x
+        self.rect.y += self.change_y
+        self.current_frame = (self.current_frame + 1) % len(self.walking_frames_right)
+        if self.change_x>0:
+            self.image = self.walking_frames_right[self.current_frame]
+        elif self.change_x<0:
+            self.image = self.walking_frames_left[self.current_frame]
+
+            # Gravity
+        self.change_y += 0.35  # Adjust the gravity strength as needed
+        if self.rect.bottom > screen_height:
+            self.change_y = 0
+            self.rect.bottom = screen_height
+        elif self.rect.top < 0:
+            self.change_y = 0
+            self.rect.top =0
+        
 
     
 
 # Example usage
 def main():
     pygame.init()
-
-    screen_width = 720
-    screen_height = 720
     screen = pygame.display.set_mode((screen_width, screen_height))
 
     pygame.display.set_caption("Super Steve")
@@ -97,7 +125,7 @@ def main():
         all_sprites.draw(screen)
         pygame.display.flip()
 
-        clock.tick(60)
+        clock.tick(30)
 
     pygame.quit()
 
@@ -274,4 +302,8 @@ if __name__ == "__main__":
 
 #     def stop(self):
 #         """ Called when the user lets off the keyboard. """
-#         self.change_x = 0
+#         selimport pygame
+# from pygame.sprite import _Group
+# import GlobalStuff
+# from platforms import MovingPlatform
+# from spritesheet_functions import SpriteSheet
