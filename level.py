@@ -33,7 +33,7 @@ class Level():
 
         # Draw the background
         screen.fill((0, 0, 0))
-        screen.blit(self.background,(self.world_shift // 3,0))
+        screen.blit(self.background, (self.world_shift // 3,0))
 
         # Draw all the sprites
         self.platform_list.draw(screen)
@@ -64,7 +64,9 @@ class Level_1(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("images/levelonebackground.jpg").convert()
+        background = pygame.image.load("images/levelonebackground.jpg").convert()
+        scale_background = pygame.transform.scale(background, (2000, 720))
+        self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
         self.level_limit = -2500
 
