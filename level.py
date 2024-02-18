@@ -81,7 +81,7 @@ class Level_1(Level):
                  ["Grass", 600, 250], ["Grass", 700, 250],
                  ["Grass", 800, 250], ["Grass", 900, 250],
                  ["Grass", 1000, 250], ["Grass", 1100, 250],
-                 ["Grass", 1200, 100], ["Grass", 1300, 100],
+                 ["Grass", 1200, 250], ["Grass", 1300, 250],
 
                 # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
