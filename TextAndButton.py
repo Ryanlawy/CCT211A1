@@ -91,7 +91,6 @@ while True:
                 #call(["python", "Game.py"])
                 Game.main()
 
-
     # background
     # screen.fill((0, 0, 0))
     screen.blit(scale_background, (0, 0))

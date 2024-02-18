@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
         sprite_width = 880  # Width of a single sprite frame in the sheet
         sprite_height = 1550  # Height of a single sprite frame in the sheet
         num_frames = 6  # Total number of frames in the sprite sheet
-        
+
 
 
         for i in range(num_frames):
@@ -34,13 +34,13 @@ class Player(pygame.sprite.Sprite):
             scaled_frame = pygame.transform.scale(frame, (100, 150))  # Scale the frame to desired size
             scaled_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the original frame
             self.walking_frames_right.append(scaled_frame)
-            
+
             # Flip the scaled frame for walking left, then apply the color key to the flipped frame
             flipped_frame = pygame.transform.flip(scaled_frame, True, False)  # Flip the frame
             flipped_frame.set_colorkey((255, 255, 255))  # Set white to transparent for the flipped frame
             self.walking_frames_left.append(flipped_frame)
 
-                
+
 
         self.image = self.walking_frames_right[self.current_frame]
         self.rect = self.image.get_rect(x=x, y=y)
@@ -65,14 +65,14 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         # Only jump if on the ground
-        # self.rect.y += 2  # Move down a bit to check if the player is on the ground
-        # platform_hit_list = pygame.sprite.spritecollide(self, self.level.level, False)
-        # self.rect.y -= 2  # Move back up
+        self.rect.y += 2  # Move down a bit to check if the player is on the ground
+        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        self.rect.y -= 2  # Move back up
 
-        # # If it's ok to jump (i.e., on the ground), then jump
-        # if len(platform_hit_list) > 0:
-        #     self.change_y = -10  # Upward movement; adjust as necessary for jump strength
-        self.change_y =-10
+        # If it's ok to jump (i.e., on the ground), then jump
+        if len(platform_hit_list) > 0 or self.rect.bottom >= 720:
+            self.change_y = -10  # Upward movement; adjust as necessary for jump strength
+        # self.change_y =-10
 
 
 

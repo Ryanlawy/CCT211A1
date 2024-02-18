@@ -20,6 +20,8 @@ GRASS_PLATFORM = (576, 720, 70, 70)
 Fire_PLATFORM = (432, 720, 70, 40)
 #water
 Water_PLATFORM = (432, 720, 70, 40)
+# Ground
+Ground_PLATFORM = (0, 650, 70, 1000)
 
 
 class Platform(pygame.sprite.Sprite):
@@ -32,6 +34,7 @@ class Platform(pygame.sprite.Sprite):
         image = pygame.image.load("images/platformgrass.jpg").convert()
         scale_image = pygame.transform.scale(image, (100, 70))
         self.image = scale_image
+        #self.image = image
         self.rect = self.image.get_rect()
 
 
@@ -109,6 +112,9 @@ class WaterPlatform(Platform):
             self.image = pygame.image.load("images/water.jpg").convert()
 
 
-
-class UpAndDownPlatform(Platform):
-    """ """
+class Ground(Platform):
+    def __init__(self):  # Your parameters here
+        super().__init__()
+        image1 = pygame.image.load("images/platformgrass.jpg").convert()
+        scale_image = pygame.transform.scale(image1, (1000, 70))
+        self.image = scale_image
