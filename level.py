@@ -83,7 +83,7 @@ class Level_1(Level):
                   [platforms.GRASS_PLATFORM, 1120, 280],
                   [platforms.GRASS_PLATFORM, 1190, 280],
                   [platforms.GRASS_PLATFORM, 1260, 280],
-                 [platforms.Ground_PLATFORM, 650, 0],]
+                 ]
 
 
         # Go through the array above and add platforms
@@ -106,10 +106,11 @@ class Level_1(Level):
         self.platform_list.add(block)
 
         # Add the ground to the map
-
+        """
         ground = platforms.Ground()
         ground.rect.x = 0
         ground.rect.y = 650
         ground.player = self.player
         ground.level = self
         self.platform_list.add(ground)
+        """

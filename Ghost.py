@@ -1,6 +1,7 @@
 # INITIALIZE
 import random
 import pygame
+import Game
 
 
 # Ghost Class
@@ -63,6 +64,7 @@ class Ghost(pygame.sprite.Sprite):
         self.rect.center = round(self.pos.x), round(self.pos.y)
 
 
+"""
 pygame.init()
 window = pygame.display.set_mode((500, 500))
 clock = pygame.time.Clock()
@@ -97,3 +99,4 @@ while run:
     pygame.draw.rect(window, (255, 0, 0), (100, 100, 300, 300), 1)
     all_groups.draw(window)
     pygame.display.flip()
+"""

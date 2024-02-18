@@ -88,7 +88,6 @@ while True:
 
             if width / 4 <= mouse[0] <= width / 4 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
                 #start the game
-                #call(["python", "Game.py"])
                 Game.main()
 
     # background
