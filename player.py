@@ -99,7 +99,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = screen_height
         elif self.rect.top < 0:
             self.change_y = 0
-            self.rect.top =0
+            self.rect.top = 0
         
         # Check for collision with platforms during vertical movement
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -114,7 +114,7 @@ class Player(pygame.sprite.Sprite):
         
         """Updates the player's position and simulates gravity."""
         self.rect.x += self.change_x
-        self.rect.y += self.change_y
+        #self.rect.y += self.change_y
         self.current_frame = (self.current_frame + 1) % len(self.walking_frames_right)
         if self.change_x>0:
             self.image = self.walking_frames_right[self.current_frame]
@@ -131,6 +131,8 @@ class Player(pygame.sprite.Sprite):
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.rect.left = block.rect.right
+
+        self.rect.y += self.change_y
 
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -149,6 +151,19 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
 
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
+        for block in block_hit_list:
+            # If we are moving right,
+            # set our right side to the left side of the item we hit
+            if self.change_y > 0:
+                self.rect.bottom = block.rect.top
+                self.change_x -= 3
+            elif self.change_y < 0:
+                # Otherwise if we are moving left, do the opposite.
+                self.rect.top = block.rect.bottom
+                self.change_x += 5
+
+"""
 # Example usage
 def main():
     pygame.init()
@@ -194,7 +209,7 @@ if __name__ == "__main__":
 
 
 # class Player(pygame.sprite.Sprite):
-#     """ This class represents the bar at the bottom that the player
+#      This class represents the bar at the bottom that the player"""
 #     controls. """
 
 #     # -- Attributes

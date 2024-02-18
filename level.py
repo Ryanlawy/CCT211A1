@@ -6,6 +6,7 @@ class Level():
 
     # a List of sprites used in levels
     platform_list = None
+    stepon_list = None
     ghost = None
     # background
     background = None
@@ -17,6 +18,7 @@ class Level():
     def __init__(self, player):
         """ initi everything"""
         self.platform_list = pygame.sprite.Group()
+        self.stepon_list = pygame.sprite.Group()
         self.ghost = pygame.sprite.Group()
         self.player = player
 
@@ -24,6 +26,7 @@ class Level():
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()
+        self.stepon_list.update()
         self.ghost.update()
 
     def draw(self, screen):
@@ -35,6 +38,7 @@ class Level():
 
         # Draw all the sprites
         self.platform_list.draw(screen)
+        self.stepon_list.draw(screen)
         self.ghost.draw(screen)
 
     def shift_world(self, shift_x):
@@ -45,6 +49,9 @@ class Level():
 
         # Go through all the sprite lists and shift
         for platform in self.platform_list:
+            platform.rect.x += shift_x
+
+        for platform in self.stepon_list:
             platform.rect.x += shift_x
 
         ###### might need change #####
@@ -68,33 +75,51 @@ class Level_1(Level):
         self.background.set_colorkey((25, 25, 25))
         self.level_limit = -2500
 
-        # Array with type of platform, and x, y location of the platform.
+        # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
-        level = [[platforms, 500, 500],
-                  [platforms, 570, 500],
-                  [platforms, 640, 500],
-                  [platforms, 800, 400],
-                  [platforms, 870, 400],
-                  [platforms, 940, 400],
-                  [platforms, 1000, 500],
-                  [platforms, 1070, 500],
-                  [platforms, 1140, 500],
-                  [platforms, 1120, 280],
-                  [platforms, 1190, 280],
-                  [platforms, 1260, 280],
+        level = [["Grass", 500, 400], ["Grass", 400, 550],
+                 ["Grass", 600, 250], ["Grass", 700, 250],
+                 ["Grass", 800, 250], ["Grass", 900, 250],
+                 ["Grass", 1000, 250], ["Grass", 1100, 250],
+                 ["Grass", 1200, 100], ["Grass", 1300, 100],
+
+                # boundary
+                 ["Wall", 0, 650], ["Wall", 0, 580],
+                 ["Wall", 0, 510], ["Wall", 0, 440],
+                 ["Wall", 0, 370], ["Wall", 0, 300],
+                 ["Wall", 0, 230], ["Wall", 0, 160],
+                 ["Wall", 3000, 650], ["Wall", 3000, 580],
+                 ["Wall", 3000, 510], ["Wall", 3000, 440],
+                 ["Wall", 3000, 370], ["Wall", 3000, 300],
+
+                 ["Wall", 1750, 650], ["Wall", 1750, 580],
+                 ["Wall", 1750, 510], ["Wall", 1750, 440],
+                 ["Wall", 1750, 370], ["Wall", 1750, 300],
                  ]
+
+        step_on = [["Water", 800, 250], ["Water", 1000, 250],
+                   ["Water", 1760, 250], ["Water", 1760, 250],
+                   ["Water", 1200, 250], ["Water", 1300, 250],]
+
 
 
         # Go through the array above and add platforms
         for platform in level:
-            block = platforms.Platform()
+            block = platforms.Platform(platform[0])
             block.rect.x = platform[1]
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
 
+        for platform in step_on:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.stepon_list.add(block)
+
         # Add a moving platform
-        block = platforms.MovingPlatform()
+        block = platforms.MovingPlatform("Wall")
         block.rect.x = 1350
         block.rect.y = 280
         block.boundary_left = 1350

@@ -44,8 +44,8 @@ class Ghost(pygame.sprite.Sprite):
     # Same thing using only pygame utilities
     def move_towards_player(self, player):
         # Find direction vector (dx, dy) between enemy and player.
-        dirvect = pygame.math.Vector2(player.rect.x - self.rect.x,
-                                      player.rect.y - self.rect.y)
+        dirvect = pygame.math.Vector2((player.rect.x - 25) - self.rect.x,
+                                      (player.rect.y - 25) - self.rect.y)
         
         try:
             dirvect.normalize()
