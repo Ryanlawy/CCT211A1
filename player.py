@@ -120,7 +120,7 @@ class Player(pygame.sprite.Sprite):
         elif self.change_x<0:
             self.image = self.walking_frames_left[self.current_frame]
 
-        ### walking on platform
+        ### check left right
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
             # If we are moving right,
@@ -133,7 +133,7 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += self.change_y
 
-        # Check and see if we hit anything
+        # Check top bottom
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
 
@@ -151,16 +151,19 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
         # step on water
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
-        for block in block_hit_list:
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
+        for block in block_hit_list1:
             # If we are moving right,
             if self.change_y > 0:
                 self.rect.bottom = block.rect.top
-                self.change_x -= 3
+                self.change_x = 8
             elif self.change_y < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.rect.top = block.rect.bottom
-                self.change_x += 3
+                self.change_x = -8
+
+
+
 
 
 """

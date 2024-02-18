@@ -42,9 +42,13 @@ class Platform(pygame.sprite.Sprite):
             image = pygame.image.load("images/water.jpg").convert()
             scale_image = pygame.transform.scale(image, (70, 70))
             self.image = scale_image
-        else:
+        elif type == "Fire":
             image = pygame.image.load("images/fire.jpg").convert()
             scale_image = pygame.transform.scale(image, (70, 70))
+            self.image = scale_image
+        else:
+            image = pygame.image.load("images/house.jpg").convert()
+            scale_image = pygame.transform.scale(image, (100, 100))
             self.image = scale_image
 
         self.rect = self.image.get_rect()

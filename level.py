@@ -83,7 +83,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -650
+        self.level_limit = -2000
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
@@ -107,9 +107,9 @@ class Level_1(Level):
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
                  ]
 
-        step_on = [["Water", 800, 250], ["Water", 870, 250],
-                   ["Water", 1000, 250], ["Water", 1070, 250],
-                   ["Water", 1140, 250], ["Water", 1300, 250],]
+        step_on = [["Water", 800, 250], ["Water", 870, 250],]
+                   #["Water", 1000, 250], ["Water", 1070, 250],
+                  # ["Water", 1140, 250], ["Water", 1300, 250],]
 
 
 
