@@ -94,6 +94,11 @@ def main():
         # chase
 
         ghost.move_towards_player(player)
+        ghost.update()
+
+        if pygame.sprite.collide_rect(ghost, player):
+            GameInfo.lives -=1
+            ghost.rect.x, ghost.rect.y=(250,250)
 
 
         # If the player gets near the right side, shift the world left (-x)

@@ -44,14 +44,14 @@ class Ghost(pygame.sprite.Sprite):
     # Same thing using only pygame utilities
     def move_towards_player(self, player):
         # Find direction vector (dx, dy) between enemy and player.
-        dirvect = pygame.math.Vector2((player.rect.x - 25) - self.rect.x,
-                                      (player.rect.y - 25) - self.rect.y)
+        dirvect = pygame.math.Vector2((player.rect.x - 0) - self.rect.x,
+                                      (player.rect.y - 0) - self.rect.y)
         
-        try:
+        if dirvect.length() != 0:  # Ensure the vector is not zero before normalizing
             dirvect.normalize()
-            # Move along this normalized vector towards the player at current speed.
             dirvect.scale_to_length(self.velocity)
             self.rect.move_ip(dirvect)
-        except:
+        else:
+            # Handle the case where the ghost has "caught" the player
             GameInfo.lives -= 1
-            self.rect.x, self.rect.y = (250, 250)
+            self.rect.x, self.rect.y = (250, 250)  # Reset position if needed
