@@ -14,7 +14,6 @@ class Level():
     world_shift = 0
     level_limit = -1000
 
-
     def __init__(self, player):
         """ initi everything"""
         self.platform_list = pygame.sprite.Group()
