@@ -1,7 +1,6 @@
 import pygame
 import platforms
 
-
 class Level():
     """ class that define levels"""
 
@@ -65,12 +64,13 @@ class Level_1(Level):
         Level.__init__(self, player)
 
         background = pygame.image.load("images/levelonebackground.jpg").convert()
-        scale_background = pygame.transform.scale(background, (2000, 720))
+        scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
         self.level_limit = -2500
 
         # Array with type of platform, and x, y location of the platform.
+
         level = [[platforms.GRASS_PLATFORM, 500, 500],
                   [platforms.GRASS_PLATFORM, 570, 500],
                   [platforms.GRASS_PLATFORM, 640, 500],
@@ -83,7 +83,7 @@ class Level_1(Level):
                   [platforms.GRASS_PLATFORM, 1120, 280],
                   [platforms.GRASS_PLATFORM, 1190, 280],
                   [platforms.GRASS_PLATFORM, 1260, 280],
-                  ]
+                 [platforms.Ground_PLATFORM, 650, 0],]
 
 
         # Go through the array above and add platforms
@@ -104,3 +104,12 @@ class Level_1(Level):
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
+
+        # Add the ground to the map
+
+        ground = platforms.Ground()
+        ground.rect.x = 0
+        ground.rect.y = 650
+        ground.player = self.player
+        ground.level = self
+        self.platform_list.add(ground)

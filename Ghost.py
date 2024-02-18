@@ -62,27 +62,7 @@ class Ghost(pygame.sprite.Sprite):
 
         self.rect.center = round(self.pos.x), round(self.pos.y)
 
-# Walls
-"""
-wall = Wall(200,150,800,2)
-wallList.add(wall)
-allSpriteList.add(wall)
-wall = Wall(200,850,800,2)
-wallList.add(wall)
-allSpriteList.add(wall)
-wall = Wall(0,0,2,1080)
-wallList.add(wall)
-allSpriteList.add(wall)
-wall = Wall(0,1078,1920,2)
-wallList.add(wall)
-allSpriteList.add(wall)
-wall = Wall(1918,0,2,1080)
-wallList.add(wall)
-allSpriteList.add(wall)
-wall = Wall(0,0,1920,2)
-wallList.add(wall)
-allSpriteList.add(wall)
-"""
+
 pygame.init()
 window = pygame.display.set_mode((500, 500))
 clock = pygame.time.Clock()
