@@ -1,4 +1,3 @@
-# INITIALIZE
 import random
 import pygame
 import Game
@@ -18,14 +17,17 @@ class Ghost(pygame.sprite.Sprite):
         self.velocity = velocity
 
         # Animation of ghost
-        image1 = pygame.image.load("images/ghost1.png").convert()
+        image1 = pygame.image.load("images/gh1.png").convert_alpha()
         image1 = pygame.transform.scale(image1, (50, 50))
+        image1.set_colorkey((28, 28, 36))
         self.moving_frame.append(image1)
-        image = pygame.image.load("images/ghost2.png").convert()
+        image = pygame.image.load("images/gh2.png").convert_alpha()
         image_c = pygame.transform.scale(image, (50, 50))
+        image_c.set_colorkey((28, 28, 36))
         self.moving_frame.append(image_c)
-        image = pygame.image.load("images/ghost3.png").convert()
+        image = pygame.image.load("images/gh3.png").convert_alpha()
         image_c = pygame.transform.scale(image, (50, 50))
+        image_c.set_colorkey((28, 28, 36))
         self.moving_frame.append(image_c)
         self.image = image1
         ###
@@ -46,13 +48,18 @@ class Ghost(pygame.sprite.Sprite):
         # Find direction vector (dx, dy) between enemy and player.
         dirvect = pygame.math.Vector2(player.rect.x - self.rect.x,
                                       player.rect.y - self.rect.y)
+        
         try:
             dirvect.normalize()
         except:
-            GameInfo.lose_life(player)
+            GameInfo.lose_life(player)  # Consider if this is the desired action when the ghost is exactly at the player's position
+        
+
+
 
 
         # Move along this normalized vector towards the player at current speed.
         dirvect.scale_to_length(self.velocity)
         self.rect.move_ip(dirvect)
+
 
