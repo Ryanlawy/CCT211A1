@@ -12,7 +12,7 @@ TODO:
 import pygame
 import TextAndButton
 import level
-
+from info import GameInfo
 from player import Player
 
 def main():
@@ -22,6 +22,8 @@ def main():
     # Set the height and width of the screen
     size = [720, 720]
     screen = pygame.display.set_mode(size)
+    # Initialize game info display
+    game_info = GameInfo(screen, 120, 3)
 
     pygame.display.set_caption("Platformer with sprite sheets")
 
@@ -55,6 +57,8 @@ def main():
 
     # -------- Main Program Loop -----------
     while not done:
+        # Calculate time passed
+        delta = clock.tick(60) / 1000.0
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
                 done = True # Flag that we are done so we exit this loop
@@ -73,6 +77,8 @@ def main():
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
                     player.stop()
 
+        game_info.update(delta)
+        
         # Update the player.
         active_sprite_list.update()
 
@@ -103,6 +109,7 @@ def main():
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
+        game_info.draw()
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 

@@ -35,12 +35,25 @@ background = pygame.image.load("images/start_background2.jpg").convert()
 scale_background = pygame.transform.scale(background, (720, 720))
 
 # defining a font
-smallfont = pygame.font.SysFont('ariel', 35)
+smallfont = pygame.font.Font("images/font.ttf", 35)
+
+quit_button_rect = pygame.Rect(width / 2, height / 2, 140, 40)
+start_button_rect = pygame.Rect(width / 4, height / 2, 140, 40)
+
 
 # rendering a text written in
 # this font
 text1 = smallfont.render('quit', True, color)
 text2 = smallfont.render('start', True, color)
+
+# For the 'quit' button
+text1_rect = text1.get_rect(center=quit_button_rect.center)
+screen.blit(text1, text1_rect)
+
+# For the 'start' button
+text2_rect = text2.get_rect(center=start_button_rect.center)
+screen.blit(text2, text2_rect)
+
 
 # Text init#
 X = 500
@@ -49,7 +62,7 @@ white = (255, 255, 255)
 blue = (0, 0, 128)
 
 #display_surface = pygame.display.set_mode((X, Y))
-font = pygame.font.SysFont('arial', 100)
+font = pygame.font.Font("images/font.ttf", 100)
 
 #['dejavuserif', 'dejavusansmono', 'dejavusans', 'arial']
 
@@ -86,27 +99,30 @@ while True:
     # stores the (x,y) coordinates into
     mouse = pygame.mouse.get_pos()
 
+
     # if mouse is hovered on a button it
     # changes to lighter shade
-    if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
-        pygame.draw.rect(screen, color_light, [
-            width / 2, height / 2, 140, 40])
-
-    elif width / 4 <= mouse[0] <= width / 4 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
-        pygame.draw.rect(screen, color_light, [
-            width / 4, height / 2, 140, 40])
-
+    # Button colors based on mouse hover
+    if quit_button_rect.collidepoint(mouse):
+        pygame.draw.rect(screen, color_light, quit_button_rect)
     else:
-        pygame.draw.rect(screen, color_dark, [
-            width / 2, height / 2, 140, 40])
+        pygame.draw.rect(screen, color_dark, quit_button_rect)
 
-        pygame.draw.rect(screen, color_dark, [
-            width / 4, height / 2, 140, 40])
+    if start_button_rect.collidepoint(mouse):
+        pygame.draw.rect(screen, color_light, start_button_rect)
+    else:
+        pygame.draw.rect(screen, color_dark, start_button_rect)
+
+    # Center and blit the text for each button
+    text1_rect = text1.get_rect(center=quit_button_rect.center)
+    screen.blit(text1, text1_rect)
+
+    text2_rect = text2.get_rect(center=start_button_rect.center)
+    screen.blit(text2, text2_rect)
 
 
-    # superimposing the text onto our button
-    screen.blit(text1, (width / 2 + 50, height / 2))
-    screen.blit(text2, (width / 4 + 50, height / 2))
+
+    # # superimposing the text onto our button
     screen.blit(text, textRect)
 
     """Intro Text"""
