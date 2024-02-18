@@ -2,7 +2,8 @@
 import random
 import pygame
 import Game
-from player import Player
+from info import GameInfo
+
 
 
 # Ghost Class
@@ -15,7 +16,7 @@ class Ghost(pygame.sprite.Sprite):
         super().__init__()
         self.pos = pygame.math.Vector2(startpos)
         self.velocity = velocity
-        self.dir = pygame.math.Vector2(startdir).normalize()
+
         # Animation of ghost
         image1 = pygame.image.load("images/ghost1.png").convert()
         image1 = pygame.transform.scale(image1, (50, 50))
@@ -34,6 +35,8 @@ class Ghost(pygame.sprite.Sprite):
 
     def update(self):
 
+
+
         pos = self.rect.x
         frame = (pos // 30) % len(self.moving_frame)
         self.image = self.moving_frame[frame]
@@ -43,7 +46,12 @@ class Ghost(pygame.sprite.Sprite):
         # Find direction vector (dx, dy) between enemy and player.
         dirvect = pygame.math.Vector2(player.rect.x - self.rect.x,
                                       player.rect.y - self.rect.y)
-        dirvect.normalize()
+        try:
+            dirvect.normalize()
+        except:
+            GameInfo.lose_life(player)
+
+
         # Move along this normalized vector towards the player at current speed.
         dirvect.scale_to_length(self.velocity)
         self.rect.move_ip(dirvect)

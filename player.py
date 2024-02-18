@@ -2,12 +2,12 @@ import pygame
 # from pygame.sprite import _Group
 # import GlobalStuff
 # from spritesheet_functions import SpriteSheet
-import platforms
+from platforms import MovingPlatform
 import level
 
 
 screen_width = 720
-screen_height = 720
+screen_height = 650
 
 
 class Player(pygame.sprite.Sprite):
@@ -72,10 +72,9 @@ class Player(pygame.sprite.Sprite):
         self.rect.y -= 2  # Move back up
 
         # If it's ok to jump (i.e., on the ground), then jump
-        if len(platform_hit_list) > 0 or self.rect.bottom >= 720:
+        if len(platform_hit_list) > 0 or self.rect.bottom >= 650:
             self.change_y = -10  # Upward movement; adjust as necessary for jump strength
         # self.change_y =-10
-
 
 
     def update(self):
@@ -96,6 +95,33 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.top < 0:
             self.change_y = 0
             self.rect.top =0
+
+        ### walking on platform
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+            # If we are moving right,
+            # set our right side to the left side of the item we hit
+            if self.change_x > 0:
+                self.rect.right = block.rect.left
+            elif self.change_x < 0:
+                # Otherwise if we are moving left, do the opposite.
+                self.rect.left = block.rect.right
+
+        # Check and see if we hit anything
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+
+            # Reset our position based on the top/bottom of the object.
+            if self.change_y > 0:
+                self.rect.bottom = block.rect.top
+            elif self.change_y < 0:
+                self.rect.top = block.rect.bottom
+
+            # Stop our vertical movement
+            self.change_y = 0
+
+            if isinstance(block, MovingPlatform):
+                self.rect.x += block.change_x
 
 
 
