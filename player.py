@@ -9,13 +9,15 @@ import level
 screen_width = 720
 screen_height = 720
 
+
 class Player(pygame.sprite.Sprite):
     # level bumper
     level = None
+
     def __init__(self, x, y):
         super().__init__()  # Initialize the sprite superclass
-        x = 60
-        y = 400
+        self.x = 60
+        self.y = 400
         self.sprite_sheet_image = pygame.image.load('images/walk.jpg').convert_alpha()  # load image
         self.change_x = 0  # Movement along X
         self.change_y = 0  # Movement along Y
@@ -73,7 +75,6 @@ class Player(pygame.sprite.Sprite):
         if len(platform_hit_list) > 0 or self.rect.bottom >= 720:
             self.change_y = -10  # Upward movement; adjust as necessary for jump strength
         # self.change_y =-10
-
 
 
 

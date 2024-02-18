@@ -13,7 +13,7 @@ import pygame
 import TextAndButton
 import level
 from info import GameInfo
-import ghost
+from ghost import Ghost
 
 from player import Player
 
@@ -51,8 +51,9 @@ def main():
     done = False
 
     # Ghost start
-    # ghost = Ghost((250, 250), 3, (3, 3))
-    # active_sprite_list.add(ghost)
+    ghost = Ghost((250, 250), 3, (3, 3), player)
+    active_sprite_list.add(ghost)
+
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 

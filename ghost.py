@@ -2,6 +2,7 @@
 import random
 import pygame
 import Game
+from player import Player
 
 
 # Ghost Class
@@ -10,8 +11,9 @@ class Ghost(pygame.sprite.Sprite):
     (SEEK, FLEE, SEPARATE) = range(3)
     moving_frame = []
 
-    def __init__(self, startpos, velocity, startdir):
+    def __init__(self, startpos, velocity, startdir, player):
         super().__init__()
+        self.player = player
         self.pos = pygame.math.Vector2(startpos)
         self.velocity = velocity
         self.dir = pygame.math.Vector2(startdir).normalize()
@@ -32,8 +34,9 @@ class Ghost(pygame.sprite.Sprite):
         self.state = Ghost.SEEK
 
     def update(self):
-        # if started:
-        x, y = pygame.mouse.get_pos()
+
+        # get the position of player
+        x, y = self.player.rect.left, self.player.rect.top
             # Find direction vector (dx, dy) between enemy and player.
         dirvect = pygame.math.Vector2(x - self.rect.centerx,
                                           y - self.rect.centery)
@@ -43,6 +46,7 @@ class Ghost(pygame.sprite.Sprite):
             if self.state == Ghost.FLEE:
                 dirvect.rotate_ip(180)
         except:
+            ### change the score ###
             print("caught player")
 
             self.dir = dirvect
