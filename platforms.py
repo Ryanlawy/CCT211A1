@@ -48,7 +48,7 @@ class Platform(pygame.sprite.Sprite):
             self.image = scale_image
         else:
             image = pygame.image.load("images/house.jpg").convert()
-            scale_image = pygame.transform.scale(image, (100, 100))
+            scale_image = pygame.transform.scale(image, (500, 500))
             self.image = scale_image
 
         self.rect = self.image.get_rect()

@@ -174,6 +174,13 @@ class Level_2(Level):
                  ["Grass", 1000, 250], ["Grass", 1100, 250],
                  ["Grass", 1200, 250], ["Grass", 1300, 250],
 
+                 ["House", 500, 250], ["House", 1000, 650],
+
+
+
+
+
+
                  # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
                  ["Wall", 0, 510], ["Wall", 0, 440],
