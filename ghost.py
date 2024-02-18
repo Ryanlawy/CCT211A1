@@ -36,7 +36,7 @@ class Ghost(pygame.sprite.Sprite):
     def update(self):
 
         # get the position of player
-        x, y = self.player.rect.left, self.player.rect.top
+        x, y = self.player.rect.x, self.player.rect.x
             # Find direction vector (dx, dy) between enemy and player.
         dirvect = pygame.math.Vector2(x - self.rect.centerx,
                                           y - self.rect.centery)
