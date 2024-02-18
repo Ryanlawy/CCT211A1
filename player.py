@@ -3,6 +3,8 @@ import pygame
 # import GlobalStuff
 # from spritesheet_functions import SpriteSheet
 from platforms import MovingPlatform
+
+import info
 import level
 
 
@@ -14,8 +16,9 @@ class Player(pygame.sprite.Sprite):
     # level bumper
     level = None
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, lives):
         super().__init__()  # Initialize the sprite superclass
+        self.lives = lives
         self.x = 60
         self.y = 400
         self.sprite_sheet_image = pygame.image.load('images/walktry.png').convert_alpha()  # load image
@@ -144,8 +147,6 @@ class Player(pygame.sprite.Sprite):
 
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
-
-
 
 
 # Example usage

@@ -11,7 +11,7 @@ class Ghost(pygame.sprite.Sprite):
 
     (SEEK, FLEE, SEPARATE) = range(3)
 
-    def __init__(self, startpos, velocity, startdir):
+    def __init__(self, startpos, velocity):
         super().__init__()
         self.pos = pygame.math.Vector2(startpos)
         self.velocity = velocity
@@ -37,8 +37,6 @@ class Ghost(pygame.sprite.Sprite):
 
     def update(self):
 
-
-
         pos = self.rect.x
         frame = (pos // 30) % len(self.moving_frame)
         self.image = self.moving_frame[frame]
@@ -51,15 +49,9 @@ class Ghost(pygame.sprite.Sprite):
         
         try:
             dirvect.normalize()
+            # Move along this normalized vector towards the player at current speed.
+            dirvect.scale_to_length(self.velocity)
+            self.rect.move_ip(dirvect)
         except:
-            GameInfo.lose_life(player)  # Consider if this is the desired action when the ghost is exactly at the player's position
-        
-
-
-
-
-        # Move along this normalized vector towards the player at current speed.
-        dirvect.scale_to_length(self.velocity)
-        self.rect.move_ip(dirvect)
-
-
+            GameInfo.lives -= 1
+            self.rect.x, self.rect.y = (250, 250)
