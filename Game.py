@@ -35,12 +35,12 @@ def main():
     # Create all the levels
     level_list = []
     level_list.append(level.Level_1(player))
-    #level_list.append(level.Level_2(player))
+    level_list.append(level.Level_2(player))
 
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
-    
+
 
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
@@ -53,13 +53,13 @@ def main():
     done = False
 
     # Ghost start
-    ghost = Ghost((250, 250), 3)
+    ghost = Ghost((250, 250), 2)
     active_sprite_list.add(ghost)
 
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
-    
+
 
     # -------- Main Program Loop -----------
     while not done:

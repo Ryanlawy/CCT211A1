@@ -1,6 +1,16 @@
 import pygame
 import platforms
+"""
+Image Used:
 
+level 1 background:
+https://www.freepik.com/free-vector/pixel-art-rural-landscape-background_...
+level 2 background:
+https://www.freepik.com/free-vector/fantastic-space-landscape-martian-alien-...
+
+
+
+"""
 class Level():
     """ class that define levels"""
 
@@ -98,8 +108,8 @@ class Level_1(Level):
                  ]
 
         step_on = [["Water", 800, 250], ["Water", 870, 250],
-                   ["Water", 1000, 250], ["Water", 1760, 250],
-                   ["Water", 1200, 250], ["Water", 1300, 250],]
+                   ["Water", 1000, 250], ["Water", 1070, 250],
+                   ["Water", 1140, 250], ["Water", 1300, 250],]
 
 
 
@@ -141,4 +151,79 @@ class Level_1(Level):
         self.platform_list.add(ground)
 
 
+class Level_2(Level):
+    """ Definition for level 1. """
 
+    def __init__(self, player):
+        """ Create level 2. """
+
+        # Call the parent constructor
+        Level.__init__(self, player)
+
+        background = pygame.image.load("images/level2background.jpg").convert()
+        scale_background = pygame.transform.scale(background, (3000, 720))
+        self.background = scale_background
+        self.background.set_colorkey((25, 25, 25))
+        self.level_limit = 2500
+
+        # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
+
+        level = [["Grass", 500, 400], ["Grass", 400, 550],
+                 ["Grass", 600, 250], ["Grass", 700, 250],
+                 ["Grass", 800, 250], ["Grass", 900, 250],
+                 ["Grass", 1000, 250], ["Grass", 1100, 250],
+                 ["Grass", 1200, 250], ["Grass", 1300, 250],
+
+                 # boundary
+                 ["Wall", 0, 650], ["Wall", 0, 580],
+                 ["Wall", 0, 510], ["Wall", 0, 440],
+                 ["Wall", 0, 370], ["Wall", 0, 300],
+                 ["Wall", 0, 230], ["Wall", 0, 160],
+
+                 ["Wall", 1750, 650], ["Wall", 1750, 580],
+                 ["Wall", 1750, 510], ["Wall", 1750, 440],
+                 ["Wall", 1750, 370], ["Wall", 1750, 300],]
+
+
+        step_on = [["Water", 800, 250], ["Water", 870, 250],
+                   ["Water", 1000, 250], ["Water", 1070, 250],
+                   ["Water", 1140, 250], ["Water", 1300, 250],]
+
+
+
+        # Go through the array above and add platforms
+        for platform in level:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.platform_list.add(block)
+
+        for platform in step_on:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.stepon_list.add(block)
+
+        # Add a moving platform
+        block = platforms.MovingPlatform("Wall")
+        block.rect.x = 1350
+        block.rect.y = 280
+        block.boundary_left = 1350
+        block.boundary_right = 1600
+        block.change_x = 1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        # Add the ground to the map
+
+        ground = platforms.Ground()
+        ground.rect.x = 0  # Start at the leftmost part of the level
+        ground.rect.y = 650  # Position at the bottom
+        ground.player = self.player
+        ground.level = self
+        # Adjust the width to match the level width
+        ground.image = pygame.transform.scale(ground.image, (3000, ground.image.get_height()))
+        self.platform_list.add(ground)

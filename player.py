@@ -145,23 +145,23 @@ class Player(pygame.sprite.Sprite):
 
             # Stop our vertical movement
             self.change_y = 0
-            self.change_x=0
+            self.change_x = 0
 
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
-
+        # step on water
         block_hit_list = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
         for block in block_hit_list:
             # If we are moving right,
-            # set our right side to the left side of the item we hit
             if self.change_y > 0:
                 self.rect.bottom = block.rect.top
                 self.change_x -= 3
             elif self.change_y < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.rect.top = block.rect.bottom
-                self.change_x += 4
+                self.change_x += 3
+
 
 """
 # Example usage
