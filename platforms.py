@@ -29,7 +29,9 @@ class Platform(pygame.sprite.Sprite):
         """"""
         pygame.sprite.Sprite.__init__(self)
         # platform
-        self.image = pygame.image.load("images/platformgrass.jpg").convert()
+        image = pygame.image.load("images/platformgrass.jpg").convert()
+        scale_image = pygame.transform.scale(image, (100, 70))
+        self.image = scale_image
         self.rect = self.image.get_rect()
 
 
@@ -97,7 +99,7 @@ class FirePlatform(Platform):
     def __init__(self):  # Your parameters here
             super().__init__()
             self.image = pygame.image.load("images/fire.jpg").convert()
-    
+
 
 
 class WaterPlatform(Platform):
