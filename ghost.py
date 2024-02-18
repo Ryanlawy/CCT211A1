@@ -32,18 +32,18 @@ class Ghost(pygame.sprite.Sprite):
         self.state = Ghost.SEEK
 
     def update(self):
-        if started:
-            x, y = pygame.mouse.get_pos()
+        # if started:
+        x, y = pygame.mouse.get_pos()
             # Find direction vector (dx, dy) between enemy and player.
-            dirvect = pygame.math.Vector2(x - self.rect.centerx,
+        dirvect = pygame.math.Vector2(x - self.rect.centerx,
                                           y - self.rect.centery)
 
-            try:
-                dirvect.normalize_ip()
-                if self.state == Ghost.FLEE:
-                    dirvect.rotate_ip(180)
-            except:
-                print("caught player")
+        try:
+            dirvect.normalize_ip()
+            if self.state == Ghost.FLEE:
+                dirvect.rotate_ip(180)
+        except:
+            print("caught player")
 
             self.dir = dirvect
         if self.state != Ghost.SEPARATE:
@@ -70,8 +70,8 @@ window = pygame.display.set_mode((500, 500))
 clock = pygame.time.Clock()
 
 all_groups = pygame.sprite.Group()
-start, velocity, direction = (
-                                 250, 250), 5, (random.random(), random.random())
+
+start, velocity, direction = (250, 250), 5, (random.random(), random.random())
 ghost = Ghost(start, velocity, direction)
 all_groups.add(ghost)
 started = False

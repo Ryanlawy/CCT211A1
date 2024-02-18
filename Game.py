@@ -13,7 +13,7 @@ import pygame
 import TextAndButton
 import level
 from info import GameInfo
-import Ghost
+import ghost
 
 from player import Player
 
@@ -28,7 +28,7 @@ def main():
     pygame.display.set_caption("Platformer with sprite sheets")
 
     # Create the player
-    player = Player(100,100)
+    player = Player(100, 100)
 
     # Create all the levels
     level_list = []
@@ -50,8 +50,8 @@ def main():
     done = False
 
     # Ghost start
-    started = False
-
+    ghost = Ghost((250, 250), 3, (3, 3))
+    active_sprite_list.add(ghost)
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
