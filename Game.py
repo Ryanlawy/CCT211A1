@@ -26,12 +26,12 @@ def main():
     # Set the height and width of the screen
     size = [720, 720]
     screen = pygame.display.set_mode(size)
-    game_info = GameInfo(screen, 120, 3)
+    game_info = GameInfo(screen, 120)
 
     pygame.display.set_caption("Platformer with sprite sheets")
 
     # Create the player
-    player = Player(100, 100)
+    player = Player(100, 100, 5)
 
     # Create all the levels
     level_list = []
@@ -53,7 +53,7 @@ def main():
     done = False
 
     # Ghost start
-    ghost = Ghost((250, 250), 3, player)
+    ghost = Ghost((250, 250), 3)
     active_sprite_list.add(ghost)
 
 
@@ -91,6 +91,7 @@ def main():
         game_info.update(delta)
 
         # chase
+
         ghost.move_towards_player(player)
 
 
