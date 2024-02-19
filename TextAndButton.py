@@ -37,8 +37,8 @@ scale_background = pygame.transform.scale(background, (720, 720))
 # defining a font
 smallfont = pygame.font.Font("images/font.ttf", 35)
 
-quit_button_rect = pygame.Rect(width / 2, height / 2, 140, 40)
-start_button_rect = pygame.Rect(width / 4, height / 2, 140, 40)
+quit_button_rect = pygame.Rect(430, height / 2, 200, 80)
+start_button_rect = pygame.Rect(80, height / 2, 200, 80)
 
 
 # rendering a text written in
@@ -60,16 +60,42 @@ X = 500
 Y = 500
 white = (255, 255, 255)
 blue = (0, 0, 128)
+red = (255,0,0)
+black =(0,0,0)
 
 #display_surface = pygame.display.set_mode((X, Y))
 font = pygame.font.Font("images/font.ttf", 100)
-
-#['dejavuserif', 'dejavusansmono', 'dejavusans', 'arial']
 
 text = font.render('Super Steven', True, white)
 textRect = text.get_rect()
 textRect.center = (360, Y // 4)
 
+"""credit"""
+font = pygame.font.Font("images/font.ttf", 10)
+
+credit = font.render('credits by CCT211 week4 sample', True, blue)
+creditRect = text.get_rect()
+creditRect.center = (900, Y // 4)
+
+"""intro fire"""
+image = pygame.image.load('images/fire.jpg').convert_alpha()
+image = pygame.transform.scale(image, (50, 50))
+
+font = pygame.font.Font("images/font.ttf", 20)
+
+fire = font.render('Steps on fires will let the player going backwards', True, black)
+fireRect = text.get_rect()
+fireRect.center = (480, 700)
+
+"""intro water"""
+image2 = pygame.image.load('images/water.jpg').convert_alpha()
+image2 = pygame.transform.scale(image, (50, 50))
+
+font = pygame.font.Font("images/font.ttf", 20)
+
+water = font.render('Steps on water will make the player stucks', True, black)
+waterRect = text.get_rect()
+waterRect.center = (480, 650)
 
 while True:
 
@@ -122,6 +148,18 @@ while True:
 
     # # superimposing the text onto our button
     screen.blit(text, textRect)
+    
+    screen.blit(credit, creditRect)
+
+    screen.blit(fire, fireRect)
+
+    screen.blit(image, (50, 620))
+
+    screen.blit(water, waterRect)
+
+    screen.blit(image2, (50, 550))
+
+    
 
     """Intro Text"""
 
