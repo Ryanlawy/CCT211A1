@@ -1,6 +1,18 @@
 
 """
 Main Game Loop
+
+Used images:
+
+1. Flag, House, water:
+https://www.freepik.com/free-vector/set-eight-pixelated-items_25690719.htm#qu...
+2. Character:
+https://www.freepik.com/free-vector/children-different-positions-isolated-wh...
+3. Fire and wall:
+https://www.freepik.com/free-vector/seven-pixelated-items_25690714.htm#from_...
+4. Ghost:
+https://www.freepik.com/free-vector/space-game-user-interface-template_2...
+
 """
 
 """
@@ -32,8 +44,8 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(level.Level_1(player))
-    level_list.append(level.Level_2(player))
+    #level_list.append(level.Level_1(player))
+    #level_list.append(level.Level_2(player))
     level_list.append(level.Level_3(player))
     # Set the current level
     current_level_no = 0
@@ -122,7 +134,7 @@ def main():
                 image2 = pygame.transform.scale(imagew, (720, 720))
                 game_win_surf = self.font.render("You win", True, level.game_over_color)
                 game_win_rect = game_win_surf.get_rect(center=(level.screen.get_width()/2, level.screen.get_height()/2))
-                level.screen.blit(image2, (0, 0))  
+                level.screen.blit(image2, (0, 0))
                 level.screen.blit(game_win_surf, game_win_rect)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT

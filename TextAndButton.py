@@ -1,7 +1,6 @@
 import pygame
 import Game
-import os
-from subprocess import call
+
 
 # initializing the constructor
 pygame.init()
