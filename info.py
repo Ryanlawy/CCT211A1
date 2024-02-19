@@ -3,7 +3,7 @@ from player import Player
 import Game
 
 class GameInfo:
-    lives = 5
+    lives = 10
     game_over = False
     def __init__(self, screen, initial_time):
         self.screen = screen
