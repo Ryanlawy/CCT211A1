@@ -78,8 +78,8 @@ creditRect = text.get_rect()
 creditRect.center = (900, Y // 4)
 
 """intro fire"""
-image = pygame.image.load('images/fire.jpg').convert_alpha()
-image = pygame.transform.scale(image, (50, 50))
+imagef = pygame.image.load('images/fire.jpg').convert_alpha()
+image1 = pygame.transform.scale(imagef, (50, 50))
 
 font = pygame.font.Font("images/font.ttf", 20)
 
@@ -88,8 +88,8 @@ fireRect = text.get_rect()
 fireRect.center = (480, 700)
 
 """intro water"""
-image2 = pygame.image.load('images/water.jpg').convert_alpha()
-image2 = pygame.transform.scale(image, (50, 50))
+imagew = pygame.image.load('images/water.jpg').convert_alpha()
+image2 = pygame.transform.scale(imagew, (50, 50))
 
 font = pygame.font.Font("images/font.ttf", 20)
 
@@ -148,18 +148,18 @@ while True:
 
     # # superimposing the text onto our button
     screen.blit(text, textRect)
-    
+
     screen.blit(credit, creditRect)
 
     screen.blit(fire, fireRect)
 
-    screen.blit(image, (50, 620))
+    screen.blit(image1, (50, 620))
 
     screen.blit(water, waterRect)
 
     screen.blit(image2, (50, 550))
 
-    
+
 
     """Intro Text"""
 
