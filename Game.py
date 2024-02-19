@@ -34,7 +34,7 @@ def main():
 
     # Create all the levels
     level_list = []
-    #level_list.append(level.Level_1(player))
+    level_list.append(level.Level_1(player))
     level_list.append(level.Level_2(player))
 
     # Set the current level
@@ -121,6 +121,8 @@ def main():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+            else:
+                pygame.quit()
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)

@@ -113,11 +113,10 @@ class Player(pygame.sprite.Sprite):
 
         """Updates the player's position and simulates gravity."""
         self.rect.x += self.change_x
-        #self.rect.y += self.change_y
         self.current_frame = (self.current_frame + 1) % len(self.walking_frames_right)
-        if self.change_x>0:
+        if self.change_x > 0:
             self.image = self.walking_frames_right[self.current_frame]
-        elif self.change_x<0:
+        elif self.change_x < 0:
             self.image = self.walking_frames_left[self.current_frame]
 
         ### check left right
@@ -151,19 +150,16 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
 
-
+"""
         # step on water
         block_hit_list1 = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
         for block in block_hit_list1:
             # If we are moving right,
-            if self.change_y > 0:
-                self.rect.bottom = block.rect.top
-                self.change_x = 8
-            elif self.change_y < 0:
-                # Otherwise if we are moving left, do the opposite.
-                self.rect.top = block.rect.bottom
-                self.change_x = -8
+            self.rect.bottom = block.rect.top
+            # Otherwise if we are moving left, do the opposite.
+            self.rect.top = block.rect.bottom
 
+"""
 
 
 

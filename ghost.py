@@ -54,4 +54,4 @@ class Ghost(pygame.sprite.Sprite):
         else:
             # Handle the case where the ghost has "caught" the player
             GameInfo.lives -= 1
-            self.rect.x, self.rect.y = (250, 250)  # Reset position if needed
+            self.rect.x, self.rect.y = (0, 0)  # Reset position if needed
