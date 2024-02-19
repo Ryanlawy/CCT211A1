@@ -150,7 +150,6 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
 
-"""
         # step on water
         block_hit_list1 = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
         for block in block_hit_list1:
@@ -159,7 +158,7 @@ class Player(pygame.sprite.Sprite):
             # Otherwise if we are moving left, do the opposite.
             self.rect.top = block.rect.bottom
 
-"""
+
 
 
 

@@ -182,10 +182,6 @@ class Level_2(Level):
 
 
 
-
-
-
-
                  # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
                  ["Wall", 0, 510], ["Wall", 0, 440],
@@ -194,8 +190,7 @@ class Level_2(Level):
 
                  ]
 
-
-        step_on = [["Fire", 800, 250], ["Fire", 870, 250]]
+        step_on = [["Fire", 1070, 250], ["Fire", 1100, 250]]
 
 
 
