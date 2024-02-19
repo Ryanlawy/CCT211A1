@@ -44,8 +44,8 @@ def main():
 
     # Create all the levels
     level_list = []
-    #level_list.append(level.Level_1(player))
-    #level_list.append(level.Level_2(player))
+    level_list.append(level.Level_1(player))
+    level_list.append(level.Level_2(player))
     level_list.append(level.Level_3(player))
     # Set the current level
     current_level_no = 0
@@ -132,10 +132,10 @@ def main():
             else:
                 imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
                 image2 = pygame.transform.scale(imagew, (720, 720))
-                game_win_surf = self.font.render("You win", True, level.game_over_color)
-                game_win_rect = game_win_surf.get_rect(center=(level.screen.get_width()/2, level.screen.get_height()/2))
-                level.screen.blit(image2, (0, 0))
-                level.screen.blit(game_win_surf, game_win_rect)
+                game_win_surf = pygame.font.render("You win", True, (255, 0, 0))
+                game_win_rect = game_win_surf.get_rect(center=(screen.get_width()/2, screen.get_height()/2))
+                screen.blit(image2, (0, 0))
+                screen.blit(game_win_surf, game_win_rect)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
