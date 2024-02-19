@@ -276,11 +276,15 @@ class Level_3(Level):
         level = [
                 ["Grass", 500, 400], ["Grass", 400, 400],
                  ["Grass", 600, 400], ["Grass", 200, 500],
-                ["Grass", 800, 250],
+                ["Grass", 800, 250], ["Grass", 1900, 300],
+
+                ["Grass", 2000, 300], ["Grass", 2100, 300],
 
                  ["Grass", 2200, 300], ["Grass", 2300, 300],
                  ["Grass", 2400, 300], ["Grass", 2500, 300],
                  ["Grass", 2600, 300], ["Grass", 2700, 300],
+                ["Grass", 1500, 400],
+
 
 
                  # boundary

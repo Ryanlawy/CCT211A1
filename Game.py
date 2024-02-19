@@ -1,6 +1,18 @@
 
 """
 Main Game Loop
+
+Used images:
+
+1. Flag, House, water:
+https://www.freepik.com/free-vector/set-eight-pixelated-items_25690719.htm#qu...
+2. Character:
+https://www.freepik.com/free-vector/children-different-positions-isolated-wh...
+3. Fire and wall:
+https://www.freepik.com/free-vector/seven-pixelated-items_25690714.htm#from_...
+4. Ghost:
+https://www.freepik.com/free-vector/space-game-user-interface-template_2...
+
 """
 
 """
@@ -32,8 +44,8 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(level.Level_1(player))
-    level_list.append(level.Level_2(player))
+    #level_list.append(level.Level_1(player))
+    #level_list.append(level.Level_2(player))
     level_list.append(level.Level_3(player))
     # Set the current level
     current_level_no = 0
@@ -118,12 +130,26 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
             else:
+<<<<<<< HEAD
                 imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
                 image2 = pygame.transform.scale(imagew, (720, 720))
                 game_win_surf = pygame.font.Font.render("You win", True, (255, 0, 0))
                 game_win_rect = game_win_surf.get_rect(center=(screen.get_width()/2, screen.get_height()/2))
                 screen.blit(image2, (0, 0))  
                 screen.blit(game_win_surf, game_win_rect)
+=======
+                pygame.quit()
+                #imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
+                #image2 = pygame.transform.scale(imagew, (720, 720))
+                #smallfont = pygame.font.Font("images/font.ttf", 50)
+                #game_win_surf = smallfont.render('quit', True, (255, 0, 0))
+
+                #game_win_surf = pygame.font.Font.render("You win", True, (255, 0, 0))
+
+                #game_win_rect = game_win_surf.get_rect(center=(screen.get_width()/2, screen.get_height()/2))
+                #screen.blit(image2, (0, 0))
+                #screen.blit(game_win_surf, game_win_rect)
+>>>>>>> c36064e22fddcfd06c194f2259d33a2f0f54dbe4
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
