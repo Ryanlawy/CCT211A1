@@ -12,6 +12,7 @@ https://www.freepik.com/free-vector/pixel-art-vacation-background_29019073.h...
 
 
 """
+screen_width = 720
 class Level():
     """ class that define levels"""
 
