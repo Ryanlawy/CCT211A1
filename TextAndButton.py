@@ -83,7 +83,7 @@ image1 = pygame.transform.scale(imagef, (50, 50))
 
 font = pygame.font.Font("images/font.ttf", 20)
 
-fire = font.render('Steps on fires will let the player going backwards', True, black)
+fire = font.render('Steps on fires will pull the player backwards', True, black)
 fireRect = text.get_rect()
 fireRect.center = (480, 700)
 
@@ -93,7 +93,7 @@ image2 = pygame.transform.scale(imagew, (50, 50))
 
 font = pygame.font.Font("images/font.ttf", 20)
 
-water = font.render('Steps on water will make the player stucks', True, black)
+water = font.render('Steps on water will push the player forward', True, black)
 waterRect = text.get_rect()
 waterRect.center = (480, 650)
 
