@@ -154,11 +154,12 @@ class Player(pygame.sprite.Sprite):
             # If we are moving right,
             if self.change_y > 0:
                 self.rect.bottom = block.rect.top
-                self.change_x -= 3
+
             elif self.change_y < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.rect.top = block.rect.bottom
-                self.change_x += 3
+
+            self.change_x += 3
 
 
 """

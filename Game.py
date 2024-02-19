@@ -51,7 +51,7 @@ def main():
     done = False
 
     # Ghost start
-    ghost = Ghost((250, 250), 2)
+    ghost = Ghost((250, 250), 1.5)
     active_sprite_list.add(ghost)
 
     # Used to manage how fast the screen updates
