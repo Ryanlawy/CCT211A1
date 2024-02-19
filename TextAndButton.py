@@ -95,7 +95,7 @@ font = pygame.font.Font("images/font.ttf", 20)
 
 water = font.render('Steps on water will push the player forward', True, black)
 waterRect = text.get_rect()
-waterRect.center = (480, 650)
+waterRect.center = (480, 630)
 
 while True:
 

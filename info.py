@@ -34,6 +34,7 @@ class GameInfo:
             lives_surf = self.font.render(f"Lives: {self.lives}", True, self.text_color)
             self.screen.blit(lives_surf, (10, 50))  # Position: slightly below the time
         else:
+            self.screen.fill((0, 0, 0))
             # Render the game over message
             game_over_surf = self.font.render("Game Over", True, self.game_over_color)
             # Center the game over message on the screen

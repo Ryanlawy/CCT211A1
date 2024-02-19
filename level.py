@@ -12,6 +12,7 @@ https://www.freepik.com/free-vector/pixel-art-vacation-background_29019073.h...
 
 
 """
+screen_width = 720
 class Level():
     """ class that define levels"""
 
@@ -91,7 +92,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -1600
+        self.level_limit = -600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
@@ -176,7 +177,7 @@ class Level_2(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -1700
+        self.level_limit = -1900
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
