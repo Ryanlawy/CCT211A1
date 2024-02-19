@@ -348,15 +348,15 @@ class Level_3(Level):
         #self.platform_list.add(block)
 
         # Add a moving left to right platform 3
-        #block = platforms.MovingPlatform("House")
-        #block.rect.x = 1500
-        #block.rect.y = 400
-        #block.boundary_left = 1350
-        #block.boundary_right = 1600
-        #block.change_x = 3
-        #block.player = self.player
-        #block.level = self
-        #self.platform_list.add(block)
+        block = platforms.MovingPlatform("House")
+        block.rect.x = 1500
+        block.rect.y = 400
+        block.boundary_left = 1350
+        block.boundary_right = 1600
+        block.change_x = 3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
 
         # Add a moving up and down platform 1
         #block = platforms.MovingPlatform("Grass")
