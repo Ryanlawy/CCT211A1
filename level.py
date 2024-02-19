@@ -7,7 +7,8 @@ level 1 background:
 https://www.freepik.com/free-vector/pixel-art-rural-landscape-background_...
 level 2 background:
 https://www.freepik.com/free-vector/fantastic-space-landscape-martian-alien-...
-
+level 3 background:
+https://www.freepik.com/free-vector/pixel-art-vacation-background_29019073.h...
 
 
 """
@@ -111,8 +112,10 @@ class Level_1(Level):
                  ["Wall", 1750, 650], ["Wall", 1750, 580],
                  ["Wall", 1750, 510], ["Wall", 1750, 440],
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
+
+                 ["Grass", 1900, 400], ["House", 2000, 650],
                  #Flag
-                 ["Flag", 2660, 510]
+                 ["Flag", 2700, 510]
                  ]
 
         step_on_water = [["Water", 800, 250], ["Water", 870, 250],
@@ -184,6 +187,8 @@ class Level_2(Level):
                  ["Wall", 3000, 370], ["Wall", 3000, 300],
 
                  ["House", 500, 250], ["House", 1000, 650],
+                    # Flag
+                 ["Flag", 2700, 510],
 
 
 
@@ -246,7 +251,7 @@ class Level_3(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        background = pygame.image.load("images/level2background.jpg").convert()
+        background = pygame.image.load("images/level3background.jpg").convert()
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
