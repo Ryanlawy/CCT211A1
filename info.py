@@ -15,7 +15,6 @@ class GameInfo:
         self.game_over_color =(255, 0, 0)
 
 
-
     def update(self, delta):
         """Update the countdown timer."""
         if not self.game_over:
@@ -41,8 +40,6 @@ class GameInfo:
             #    self.screen.blit(image2, (0, 0))
             #    self.screen.blit(game_win_surf, game_win_rect)
 
-
-
         else:
             self.screen.fill((0, 0, 0))
             # Render the game over message
@@ -54,7 +51,9 @@ class GameInfo:
     def won(self):
         imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
         image2 = pygame.transform.scale(imagew, (720, 720))
-        game_win_surf = self.font.render("You won", True, self.game_over_color)
+        smallfont = pygame.font.Font("images/font.ttf", 50)
+        game_win_surf = smallfont.render('quit', True, (255, 0, 0))
+        #game_win_surf = self.font.render("You won", True, self.game_over_color)
         game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
         self.screen.blit(image2, (0, 0))
         self.screen.blit(game_win_surf, game_win_rect)

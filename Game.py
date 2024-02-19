@@ -44,8 +44,8 @@ def main():
 
     # Create all the levels
     level_list = []
-    #level_list.append(level.Level_1(player))
-    #level_list.append(level.Level_2(player))
+    level_list.append(level.Level_1(player))
+    level_list.append(level.Level_2(player))
     level_list.append(level.Level_3(player))
     # Set the current level
     current_level_no = 0
@@ -130,19 +130,18 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
             else:
+                #pygame.screen.fill((0, 0, 0))
+                # Render the game over message
+                #smallfont = pygame.font.Font("images/font.ttf", 50)
+                #game_win_surf = smallfont.render('quit', True, (255, 0, 0))
+                #game_over_surf = pygame.font.Font.render("images/font.ttf", "YOU WON", True, (0, 0, 0)))
+                # Center the game over message on the screen
+                #game_over_rect = game_win_surf.get_rect(center=(pygame.screen.get_width()/2, pygame.screen.get_height()/2))
+                #pygame.screen.blit(game_win_surf, game_over_rect)
+                game_info.won()
                 pygame.quit()
 
 
-                #imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
-                #image2 = pygame.transform.scale(imagew, (720, 720))
-                #smallfont = pygame.font.Font("images/font.ttf", 50)
-                #game_win_surf = smallfont.render('quit', True, (255, 0, 0))
-
-                #game_win_surf = pygame.font.Font.render("You win", True, (255, 0, 0))
-
-                #game_win_rect = game_win_surf.get_rect(center=(screen.get_width()/2, screen.get_height()/2))
-                #screen.blit(image2, (0, 0))
-                #screen.blit(game_win_surf, game_win_rect)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
