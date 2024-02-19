@@ -148,8 +148,21 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
 
+        # step on Fire
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.steponfire_list, False)
+        for block in block_hit_list1:
+            # If we are moving right,
+            if self.change_y > 0:
+                self.rect.bottom = block.rect.top
+
+            elif self.change_y < 0:
+                # Otherwise if we are moving left, do the opposite.
+                self.rect.top = block.rect.bottom
+
+            self.change_x -= 3
+
         # step on water
-        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.stepon_list, False)
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.steponwater_list, False)
         for block in block_hit_list1:
             # If we are moving right,
             if self.change_y > 0:

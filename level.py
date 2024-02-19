@@ -16,7 +16,8 @@ class Level():
 
     # a List of sprites used in levels
     platform_list = None
-    stepon_list = None
+    steponwater_list = None
+    steponfire_list = None
     ghost = None
     # background
     background = None
@@ -28,7 +29,8 @@ class Level():
     def __init__(self, player):
         """ initi everything"""
         self.platform_list = pygame.sprite.Group()
-        self.stepon_list = pygame.sprite.Group()
+        self.steponwater_list = pygame.sprite.Group()
+        self.steponfire_list = pygame.sprite.Group()
         self.ghost = pygame.sprite.Group()
         self.player = player
 
@@ -36,7 +38,8 @@ class Level():
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()
-        self.stepon_list.update()
+        self.steponwater_list.update()
+        self.steponfire_list.update()
         self.ghost.update()
 
     def draw(self, screen):
@@ -48,7 +51,8 @@ class Level():
 
         # Draw all the sprites
         self.platform_list.draw(screen)
-        self.stepon_list.draw(screen)
+        self.steponwater_list.draw(screen)
+        self.steponfire_list.draw(screen)
         self.ghost.draw(screen)
 
     def shift_world(self, shift_x):
@@ -61,7 +65,10 @@ class Level():
         for platform in self.platform_list:
             platform.rect.x += shift_x
 
-        for platform in self.stepon_list:
+        for platform in self.steponwater_list:
+            platform.rect.x += shift_x
+
+        for platform in self.steponfire_list:
             platform.rect.x += shift_x
 
         ###### might need change #####
@@ -83,13 +90,12 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -600
+        self.level_limit = -1600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
         level = [["Grass", 500, 400], ["Grass", 400, 550],
                  ["Grass", 600, 250], ["Grass", 700, 250],
-                 ["Grass", 800, 300], ["Grass", 900, 250],
                  ["Grass", 1000, 250], ["Grass", 1100, 250],
                  ["Grass", 1200, 400], ["Grass", 1300, 500],
 
@@ -106,12 +112,12 @@ class Level_1(Level):
                  ["Wall", 1750, 510], ["Wall", 1750, 440],
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
                  #Flag
-                 ["Flag", 2800, 550]
+                 ["Flag", 2660, 510]
                  ]
 
-        step_on = [["Water", 800, 250], ["Water", 870, 250],]
-                   #["Water", 1000, 250], ["Water", 1070, 250],
-                  # ["Water", 1140, 250], ["Water", 1300, 250],]
+        step_on_water = [["Water", 800, 250], ["Water", 870, 250],
+                   ["Water", 1000, 250], ["Water", 1070, 250],
+                  ]
 
 
 
@@ -123,12 +129,12 @@ class Level_1(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        for p in step_on:
+        for p in step_on_water:
             block = platforms.Platform(p[0])
             block.rect.x = p[1]
             block.rect.y = p[2]
             block.player = self.player
-            self.stepon_list.add(block)
+            self.steponwater_list.add(block)
 
         # Add a moving platform
         block = platforms.MovingPlatform("Wall")
@@ -154,7 +160,7 @@ class Level_1(Level):
 
 
 class Level_2(Level):
-    """ Definition for level 1. """
+    """ Definition for level 2. """
 
     def __init__(self, player):
         """ Create level 2. """
@@ -188,7 +194,7 @@ class Level_2(Level):
                  ["Wall", 0, 230], ["Wall", 0, 160],
                  ]
 
-        step_on = [["Fire", 1070, 250], ["Fire", 1100, 250]]
+        step_on_fire = [["Fire", 1070, 250], ["Fire", 1100, 250]]
 
 
 
@@ -200,12 +206,90 @@ class Level_2(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        for platform in step_on:
+        for platform in step_on_fire:
             block = platforms.Platform(platform[0])
             block.rect.x = platform[1]
             block.rect.y = platform[2]
             block.player = self.player
-            self.stepon_list.add(block)
+            self.steponfire_list.add(block)
+
+        # Add a moving platform
+        block = platforms.MovingPlatform("Wall")
+        block.rect.x = 1350
+        block.rect.y = 280
+        block.boundary_left = 1350
+        block.boundary_right = 1600
+        block.change_x = 1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        # Add the ground to the map
+
+        ground = platforms.Ground()
+        ground.rect.x = 0  # Start at the leftmost part of the level
+        ground.rect.y = 650  # Position at the bottom
+        ground.player = self.player
+        ground.level = self
+        # Adjust the width to match the level width
+        ground.image = pygame.transform.scale(ground.image, (3000, ground.image.get_height()))
+        self.platform_list.add(ground)
+
+
+
+class Level_3(Level):
+    """ Definition for level 3. """
+
+    def __init__(self, player):
+        """ Create level 3. """
+
+        # Call the parent constructor
+        Level.__init__(self, player)
+
+        background = pygame.image.load("images/level2background.jpg").convert()
+        scale_background = pygame.transform.scale(background, (3000, 720))
+        self.background = scale_background
+        self.background.set_colorkey((25, 25, 25))
+        self.level_limit = -1600
+
+        # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
+
+        level = [["Grass", 400, 400], ["Grass", 300, 550],
+                 ["Grass", 900, 400], ["Grass", 1000, 550],
+                 ["Grass", 900, 400], ["Grass", 1000, 550],
+                 ["Wall", 3000, 650], ["Wall", 3000, 580],
+                 ["Wall", 3000, 510], ["Wall", 3000, 440],
+                 ["Wall", 3000, 370], ["Wall", 3000, 300],
+
+                 ["House", 500, 250], ["House", 1000, 650],
+
+
+
+                 # boundary
+                 ["Wall", 0, 650], ["Wall", 0, 580],
+                 ["Wall", 0, 510], ["Wall", 0, 440],
+                 ["Wall", 0, 370], ["Wall", 0, 300],
+                 ["Wall", 0, 230], ["Wall", 0, 160],
+                 ]
+
+        step_on_fire = [["Fire", 1070, 250], ["Fire", 1100, 250]]
+
+
+
+        # Go through the array above and add platforms
+        for platform in level:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.platform_list.add(block)
+
+        for platform in step_on_fire:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.steponfire_list.add(block)
 
         # Add a moving platform
         block = platforms.MovingPlatform("Wall")
