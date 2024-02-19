@@ -181,13 +181,13 @@ class Level_2(Level):
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
         level = [["Grass", 400, 400], ["Grass", 300, 550],
-                 ["Grass", 900, 400], ["Grass", 1000, 550],
-                 ["Grass", 900, 400], ["Grass", 1000, 550],
+                 ["Grass", 900, 250], ["Grass", 1000, 350],
+                 ["Grass", 1300, 300], ["Grass", 1500, 550],
                  ["Wall", 3000, 650], ["Wall", 3000, 580],
                  ["Wall", 3000, 510], ["Wall", 3000, 440],
                  ["Wall", 3000, 370], ["Wall", 3000, 300],
 
-                 ["House", 500, 250], ["House", 1000, 250],
+                 ["House", 500, 250], ["House", 2500, 250],
                     # Flag
                  ["Flag", 2700, 510],
 
@@ -198,9 +198,14 @@ class Level_2(Level):
                  ["Wall", 0, 510], ["Wall", 0, 440],
                  ["Wall", 0, 370], ["Wall", 0, 300],
                  ["Wall", 0, 230], ["Wall", 0, 160],
+                 ["Wall", 3000, 650], ["Wall", 3000, 580],
+                 ["Wall", 3000, 510], ["Wall", 3000, 440],
+                 ["Wall", 3000, 370], ["Wall", 3000, 300],
+
+
                  ]
 
-        step_on_fire = [["Fire", 1070, 250], ["Fire", 1100, 250]]
+        step_on_fire = [["Fire", 1200, 250], ["Fire", 1270, 250]]
 
 
 
@@ -223,9 +228,9 @@ class Level_2(Level):
         block = platforms.MovingPlatform("Wall")
         block.rect.x = 1350
         block.rect.y = 280
-        block.boundary_left = 1350
-        block.boundary_right = 1600
-        block.change_x = 1
+        block.boundary_top = 200
+        block.boundary_bottom = 500
+        block.change_y = 1
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
