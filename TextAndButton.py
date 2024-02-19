@@ -64,8 +64,6 @@ blue = (0, 0, 128)
 #display_surface = pygame.display.set_mode((X, Y))
 font = pygame.font.Font("images/font.ttf", 100)
 
-#['dejavuserif', 'dejavusansmono', 'dejavusans', 'arial']
-
 text = font.render('Super Steven', True, white)
 textRect = text.get_rect()
 textRect.center = (360, Y // 4)
