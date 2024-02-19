@@ -192,7 +192,7 @@ class Level_2(Level):
 
                  ["House", 500, 250], ["House", 2550, 250],
                     # Flag
-                 ["Flag", 2860, 200],
+                 ["Flag", 2850, 200],
 
 
 
