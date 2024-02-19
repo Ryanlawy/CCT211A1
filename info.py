@@ -1,9 +1,9 @@
 import pygame
 from player import Player
-import Game
+
 
 class GameInfo:
-    lives = 510
+    lives = 10
     game_over = False
     def __init__(self, screen, initial_time):
         self.screen = screen
@@ -40,6 +40,8 @@ class GameInfo:
             #    game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
             #    self.screen.blit(image2, (0, 0))
             #    self.screen.blit(game_win_surf, game_win_rect)
+
+
 
         else:
             self.screen.fill((0, 0, 0))

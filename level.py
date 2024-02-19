@@ -277,6 +277,7 @@ class Level_3(Level):
                 ["Grass", 500, 400], ["Grass", 400, 400],
                  ["Grass", 600, 400], ["Grass", 200, 500],
                 ["Grass", 800, 250], ["Grass", 1900, 300],
+                ["Grass", 1000, 250], ["Grass", 1100, 300],
 
                 ["Grass", 2000, 300], ["Grass", 2100, 300],
 
@@ -297,8 +298,8 @@ class Level_3(Level):
                 ["Flag", 2720, 200], ["House", 2550, 250],
                  ]
 
-        step_on_fire = [["Fire", 1100, 240], ["Fire", 1170, 240],
-                        ["Fire", 1400, 240], ["Fire", 1470, 240],]
+        step_on_fire = [["Fire", 1100, 280]
+                        ]
 
         step_on_water = [["Water", 800, 650], ]
 
