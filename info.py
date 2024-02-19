@@ -13,7 +13,7 @@ class GameInfo:
         # Colors
         self.text_color = (0, 0, 0)
         self.game_over_color =(255, 0, 0)
-        
+
 
 
     def update(self, delta):

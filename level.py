@@ -293,8 +293,8 @@ class Level_3(Level):
                 ["Flag", 2720, 200], ["House", 2550, 250],
                  ]
 
-        step_on_fire = [["Fire", 1100, 260],
-                        ["Fire", 1400, 260],]
+        step_on_fire = [["Fire", 1100, 260], ["Fire", 1170, 260],
+                        ["Fire", 1400, 260], ["Fire", 1470, 260],]
 
         step_on_water = [["Water", 800, 650], ]
 
@@ -378,7 +378,7 @@ class Level_3(Level):
 
         # Add a moving up and down platform 3
         block = platforms.MovingPlatform("Wall")
-        block.rect.x = 1650
+        block.rect.x = 1600
         block.rect.y = 280
         block.boundary_top = 200
         block.boundary_bottom = 600
