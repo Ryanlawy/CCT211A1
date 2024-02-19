@@ -23,7 +23,7 @@ class Level():
 
     # How far this world has been scrolled left/right
     world_shift = 0
-    level_limit = -1000
+    level_limit = -2000
 
     def __init__(self, player):
         """ initi everything"""

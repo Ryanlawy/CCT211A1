@@ -28,4 +28,4 @@ class SpriteSheet(object):
         image.set_colorkey(constants.BLACK)
 
         # Return the image
-        return imagev
+        return image

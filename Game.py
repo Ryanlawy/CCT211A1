@@ -15,8 +15,6 @@ import level
 from info import GameInfo
 from ghost import Ghost
 import platforms
-from enemy import Enemy
-
 from player import Player
 
 def main():
@@ -45,7 +43,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 340
+    player.rect.x = 150
     player.rect.y = 720 - player.rect.height
     active_sprite_list.add(player)
 
@@ -55,7 +53,6 @@ def main():
     # Ghost start
     ghost = Ghost((250, 250), 2)
     active_sprite_list.add(ghost)
-
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
@@ -99,7 +96,6 @@ def main():
         if pygame.sprite.collide_rect(ghost, player):
             GameInfo.lives -=1
             ghost.rect.x, ghost.rect.y=(250,250)
-
 
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.x >= 500:
