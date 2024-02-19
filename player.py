@@ -172,7 +172,7 @@ class Player(pygame.sprite.Sprite):
                 # Otherwise if we are moving left, do the opposite.
                 self.rect.top = block.rect.bottom
 
-            self.change_x += 3
+            self.change_x = 0
 
 
 """
