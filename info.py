@@ -3,7 +3,7 @@ from player import Player
 import Game
 
 class GameInfo:
-    lives = 10
+    lives = 510
     game_over = False
     def __init__(self, screen, initial_time):
         self.screen = screen
@@ -33,6 +33,13 @@ class GameInfo:
         # Render the lives
             lives_surf = self.font.render(f"Lives: {self.lives}", True, self.text_color)
             self.screen.blit(lives_surf, (10, 50))  # Position: slightly below the time
+            if time_surf != 0 and lives_surf !=0:
+                imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
+                image2 = pygame.transform.scale(imagew, (720, 720))
+                game_win_surf = self.font.render("You win", True, self.game_over_color)
+                game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+                self.screen.blit(image2, (0, 0))  
+                self.screen.blit(game_win_surf, game_win_rect)
 
         else:
             self.screen.fill((0, 0, 0))
