@@ -83,7 +83,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -1600
+        self.level_limit = -600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 

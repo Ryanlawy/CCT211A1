@@ -95,7 +95,7 @@ def main():
 
         if pygame.sprite.collide_rect(ghost, player):
             GameInfo.lives -=1
-            ghost.rect.x, ghost.rect.y=(250,250)
+            ghost.rect.x, ghost.rect.y=(100,100)
 
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.x >= 500:
