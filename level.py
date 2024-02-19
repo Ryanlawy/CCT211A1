@@ -273,15 +273,14 @@ class Level_3(Level):
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
-        level = [["Grass", 400, 400], ["Grass", 300, 550],
-                 ["Grass", 900, 400], ["Grass", 1000, 550],
-                 ["Grass", 900, 400], ["Grass", 1000, 550],
-                 ["Wall", 3000, 650], ["Wall", 3000, 580],
-                 ["Wall", 3000, 510], ["Wall", 3000, 440],
-                 ["Wall", 3000, 370], ["Wall", 3000, 300],
+        level = [
+                ["Grass", 500, 400], ["Grass", 400, 400],
+                 ["Grass", 600, 400], ["Grass", 200, 500],
+                ["Grass", 800, 250],
 
-                 ["House", 500, 250], ["House", 1000, 650],
-
+                 ["Grass", 2200, 300], ["Grass", 2300, 300],
+                 ["Grass", 2400, 300], ["Grass", 2500, 300],
+                 ["Grass", 2600, 300], ["Grass", 2700, 300],
 
 
                  # boundary
@@ -289,10 +288,15 @@ class Level_3(Level):
                  ["Wall", 0, 510], ["Wall", 0, 440],
                  ["Wall", 0, 370], ["Wall", 0, 300],
                  ["Wall", 0, 230], ["Wall", 0, 160],
+
+                    # Flag
+                ["Flag", 2720, 200], ["House", 2550, 250],
                  ]
 
-        step_on_fire = [["Fire", 1070, 250], ["Fire", 1100, 250]]
+        step_on_fire = [["Fire", 1100, 260], ["Fire", 1170, 260],
+                        ["Fire", 1400, 260], ["Fire", 1470, 260],]
 
+        step_on_water = [["Water", 800, 650], ]
 
 
         # Go through the array above and add platforms
@@ -310,19 +314,91 @@ class Level_3(Level):
             block.player = self.player
             self.steponfire_list.add(block)
 
-        # Add a moving platform
-        block = platforms.MovingPlatform("Wall")
-        block.rect.x = 1350
-        block.rect.y = 280
+        for platform in step_on_water:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.steponwater_list.add(block)
+
+
+        # Add a moving left to right platform 1
+        #block = platforms.MovingPlatform("Wall")
+        #block.rect.y = 280
+        #block.boundary_left = 1350
+        #block.boundary_right = 1600
+        #block.change_x = 2
+        #block.player = self.player
+        #block.level = self
+        #self.platform_list.add(block)
+
+        # Add a moving left to right platform 2
+        #block = platforms.MovingPlatform("Grass")
+        #block.rect.x = 2000
+        #block.rect.y = 280
+        #block.boundary_left = 1350
+        #block.boundary_right = 1600
+        #block.change_x = 1
+        #block.player = self.player
+        #block.level = self
+        #self.platform_list.add(block)
+
+        # Add a moving left to right platform 3
+        block = platforms.MovingPlatform("House")
+        block.rect.x = 1500
+        block.rect.y = 400
         block.boundary_left = 1350
         block.boundary_right = 1600
-        block.change_x = 1
+        block.change_x = 3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        # Add a moving up and down platform 1
+        #block = platforms.MovingPlatform("Grass")
+        #block.rect.x = 2000
+        #block.rect.y = 280
+        #block.boundary_top = 200
+        #block.boundary_bottom = 600
+        #block.change_y = 1
+        #block.player = self.player
+        #block.level = self
+        #self.platform_list.add(block)
+
+        # Add a moving up and down platform 2
+        block = platforms.MovingPlatform("Wall")
+        block.rect.x = 1300
+        block.rect.y = 280
+        block.boundary_top = 200
+        block.boundary_bottom = 600
+        block.change_y = 1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        # Add a moving up and down platform 3
+        block = platforms.MovingPlatform("Wall")
+        block.rect.x = 1600
+        block.rect.y = 280
+        block.boundary_top = 200
+        block.boundary_bottom = 600
+        block.change_y = 1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        # Add a moving up and down platform 4
+        block = platforms.MovingPlatform("Wall")
+        block.rect.x = 1000
+        block.rect.y = 280
+        block.boundary_top = 200
+        block.boundary_bottom = 600
+        block.change_y = 1
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
 
         # Add the ground to the map
-
         ground = platforms.Ground()
         ground.rect.x = 0  # Start at the leftmost part of the level
         ground.rect.y = 650  # Position at the bottom
