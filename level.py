@@ -92,7 +92,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -600
+        self.level_limit = -1600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
@@ -297,8 +297,8 @@ class Level_3(Level):
                 ["Flag", 2720, 200], ["House", 2550, 250],
                  ]
 
-        step_on_fire = [["Fire", 1100, 260], ["Fire", 1170, 260],
-                        ["Fire", 1400, 260], ["Fire", 1470, 260],]
+        step_on_fire = [["Fire", 1100, 240], ["Fire", 1170, 240],
+                        ["Fire", 1400, 240], ["Fire", 1470, 240],]
 
         step_on_water = [["Water", 800, 650], ]
 

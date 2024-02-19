@@ -33,13 +33,13 @@ class GameInfo:
         # Render the lives
             lives_surf = self.font.render(f"Lives: {self.lives}", True, self.text_color)
             self.screen.blit(lives_surf, (10, 50))  # Position: slightly below the time
-            if time_surf != 0 and lives_surf !=0:
-                imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
-                image2 = pygame.transform.scale(imagew, (720, 720))
-                game_win_surf = self.font.render("You win", True, self.game_over_color)
-                game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
-                self.screen.blit(image2, (0, 0))  
-                self.screen.blit(game_win_surf, game_win_rect)
+            #if time_surf != 0 and lives_surf !=0:
+            #    imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
+            #    image2 = pygame.transform.scale(imagew, (720, 720))
+            #    game_win_surf = self.font.render("You won", True, self.game_over_color)
+            #    game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+            #    self.screen.blit(image2, (0, 0))
+            #    self.screen.blit(game_win_surf, game_win_rect)
 
         else:
             self.screen.fill((0, 0, 0))
@@ -49,6 +49,11 @@ class GameInfo:
             game_over_rect = game_over_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
             self.screen.blit(game_over_surf, game_over_rect)
 
-
-
+    def won(self):
+        imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
+        image2 = pygame.transform.scale(imagew, (720, 720))
+        game_win_surf = self.font.render("You won", True, self.game_over_color)
+        game_win_rect = game_win_surf.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+        self.screen.blit(image2, (0, 0))
+        self.screen.blit(game_win_surf, game_win_rect)
 

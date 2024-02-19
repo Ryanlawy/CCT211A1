@@ -131,6 +131,7 @@ def main():
                 player.level = current_level
             else:
                 pygame.quit()
+                game_info.won()
                 #imagew = pygame.image.load('images/trophy.jpg').convert_alpha()
                 #image2 = pygame.transform.scale(imagew, (720, 720))
                 #smallfont = pygame.font.Font("images/font.ttf", 50)
