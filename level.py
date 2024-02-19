@@ -92,7 +92,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -1600
+        self.level_limit = -600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
@@ -177,20 +177,23 @@ class Level_2(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -1600
+        self.level_limit = -1700
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
         level = [["Grass", 400, 400], ["Grass", 300, 550],
-                 ["Grass", 900, 250], ["Grass", 1000, 350],
-                 ["Grass", 1300, 300], ["Grass", 1500, 550],
+                 ["Wall", 900, 250], ["Wall", 1000, 250],
+                 ["Wall", 1800, 300], ["Wall", 1900, 300],
+                 ["Wall", 2000, 300], ["Wall", 2100, 300],
+                 ["Wall", 1500, 500], ["Wall", 1600, 450],
+
                  ["Wall", 3000, 650], ["Wall", 3000, 580],
                  ["Wall", 3000, 510], ["Wall", 3000, 440],
                  ["Wall", 3000, 370], ["Wall", 3000, 300],
 
-                 ["House", 500, 250], ["House", 2500, 250],
+                 ["House", 500, 250], ["House", 2550, 250],
                     # Flag
-                 ["Flag", 2700, 510],
+                 ["Flag", 2850, 200],
 
 
 
@@ -206,7 +209,11 @@ class Level_2(Level):
 
                  ]
 
-        step_on_fire = [["Fire", 1200, 250], ["Fire", 1270, 250]]
+        step_on_fire = [["Fire", 1200, 250], ["Fire", 1270, 250],
+                        ["Fire", 2000, 650], ["Fire", 2070, 650],
+                        ["Fire", 2140, 650], ["Fire", 2210, 650],
+                        ["Fire", 2280, 650]
+                        ]
 
 
 
@@ -227,10 +234,10 @@ class Level_2(Level):
 
         # Add a moving platform
         block = platforms.MovingPlatform("Wall")
-        block.rect.x = 1350
-        block.rect.y = 280
+        block.rect.x = 2300
+        block.rect.y = 350
         block.boundary_top = 200
-        block.boundary_bottom = 500
+        block.boundary_bottom = 600
         block.change_y = 1
         block.player = self.player
         block.level = self
