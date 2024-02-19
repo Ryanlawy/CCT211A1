@@ -176,23 +176,23 @@ class Level_2(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -2000
+        self.level_limit = -1700
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
         level = [["Grass", 400, 400], ["Grass", 300, 550],
                  ["Wall", 900, 250], ["Wall", 1000, 250],
-                 ["Grass", 1800, 300], ["Grass", 1900, 300],
-                 ["Grass", 2000, 300], ["Grass", 2100, 300],
+                 ["Wall", 1800, 300], ["Wall", 1900, 300],
+                 ["Wall", 2000, 300], ["Wall", 2100, 300],
                  ["Wall", 1500, 500], ["Wall", 1600, 450],
-                 ["Wall", 2000, 250],
+
                  ["Wall", 3000, 650], ["Wall", 3000, 580],
                  ["Wall", 3000, 510], ["Wall", 3000, 440],
                  ["Wall", 3000, 370], ["Wall", 3000, 300],
 
-                 ["House", 500, 250], ["House", 2500, 250],
+                 ["House", 500, 250], ["House", 2550, 250],
                     # Flag
-                 ["Flag", 2700, 510],
+                 ["Flag", 2860, 200],
 
 
 
