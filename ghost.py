@@ -17,15 +17,15 @@ class Ghost(pygame.sprite.Sprite):
         self.velocity = velocity
 
         # Animation of ghost
-        image1 = pygame.image.load("images/gh1.png").convert_alpha()
+        image1 = pygame.image.load("images/ghost1.png")
         image1 = pygame.transform.scale(image1, (50, 50))
         image1.set_colorkey((28, 28, 36))
         self.moving_frame.append(image1)
-        image = pygame.image.load("images/gh2.png").convert_alpha()
+        image = pygame.image.load("images/ghost2.png")
         image_c = pygame.transform.scale(image, (50, 50))
         image_c.set_colorkey((28, 28, 36))
         self.moving_frame.append(image_c)
-        image = pygame.image.load("images/gh3.png").convert_alpha()
+        image = pygame.image.load("images/ghost1.png")
         image_c = pygame.transform.scale(image, (50, 50))
         image_c.set_colorkey((28, 28, 36))
         self.moving_frame.append(image_c)
@@ -46,7 +46,7 @@ class Ghost(pygame.sprite.Sprite):
         # Find direction vector (dx, dy) between enemy and player.
         dirvect = pygame.math.Vector2((player.rect.x - 0) - self.rect.x,
                                       (player.rect.y - 0) - self.rect.y)
-        
+
         if dirvect.length() != 0:  # Ensure the vector is not zero before normalizing
             dirvect.normalize()
             dirvect.scale_to_length(self.velocity)
@@ -54,4 +54,4 @@ class Ghost(pygame.sprite.Sprite):
         else:
             # Handle the case where the ghost has "caught" the player
             GameInfo.lives -= 1
-            self.rect.x, self.rect.y = (250, 250)  # Reset position if needed
+            self.rect.x, self.rect.y = (0, 0)  # Reset position if needed

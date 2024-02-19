@@ -83,7 +83,7 @@ class Level_1(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = -650
+        self.level_limit = -1600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
@@ -91,7 +91,7 @@ class Level_1(Level):
                  ["Grass", 600, 250], ["Grass", 700, 250],
                  ["Grass", 800, 250], ["Grass", 900, 250],
                  ["Grass", 1000, 250], ["Grass", 1100, 250],
-                 ["Grass", 1200, 250], ["Grass", 1300, 250],
+                 ["Grass", 1200, 400], ["Grass", 1300, 500],
 
                 # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
@@ -105,11 +105,14 @@ class Level_1(Level):
                  ["Wall", 1750, 650], ["Wall", 1750, 580],
                  ["Wall", 1750, 510], ["Wall", 1750, 440],
                  ["Wall", 1750, 370], ["Wall", 1750, 300],
+
+                 #Flag
+                 ["Flag", 2500, 650]
                  ]
 
-        step_on = [["Water", 800, 250], ["Water", 870, 250],
-                   ["Water", 1000, 250], ["Water", 1070, 250],
-                   ["Water", 1140, 250], ["Water", 1300, 250],]
+        step_on = [["Water", 800, 250], ["Water", 870, 250],]
+                   #["Water", 1000, 250], ["Water", 1070, 250],
+                  # ["Water", 1140, 250], ["Water", 1300, 250],]
 
 
 
@@ -121,10 +124,10 @@ class Level_1(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        for platform in step_on:
-            block = platforms.Platform(platform[0])
-            block.rect.x = platform[1]
-            block.rect.y = platform[2]
+        for p in step_on:
+            block = platforms.Platform(p[0])
+            block.rect.x = p[1]
+            block.rect.y = p[2]
             block.player = self.player
             self.stepon_list.add(block)
 
@@ -164,15 +167,20 @@ class Level_2(Level):
         scale_background = pygame.transform.scale(background, (3000, 720))
         self.background = scale_background
         self.background.set_colorkey((25, 25, 25))
-        self.level_limit = 2500
+        self.level_limit = -1600
 
         # Array with type of platform, and x(further), y(height < Smaller-higher) location of the platform.
 
-        level = [["Grass", 500, 400], ["Grass", 400, 550],
-                 ["Grass", 600, 250], ["Grass", 700, 250],
-                 ["Grass", 800, 250], ["Grass", 900, 250],
-                 ["Grass", 1000, 250], ["Grass", 1100, 250],
-                 ["Grass", 1200, 250], ["Grass", 1300, 250],
+        level = [["Grass", 400, 400], ["Grass", 300, 550],
+                 ["Grass", 900, 400], ["Grass", 1000, 550],
+                 ["Grass", 900, 400], ["Grass", 1000, 550],
+                 ["Wall", 3000, 650], ["Wall", 3000, 580],
+                 ["Wall", 3000, 510], ["Wall", 3000, 440],
+                 ["Wall", 3000, 370], ["Wall", 3000, 300],
+
+                 ["House", 500, 250], ["House", 1000, 650],
+
+
 
                  # boundary
                  ["Wall", 0, 650], ["Wall", 0, 580],
@@ -180,14 +188,9 @@ class Level_2(Level):
                  ["Wall", 0, 370], ["Wall", 0, 300],
                  ["Wall", 0, 230], ["Wall", 0, 160],
 
-                 ["Wall", 1750, 650], ["Wall", 1750, 580],
-                 ["Wall", 1750, 510], ["Wall", 1750, 440],
-                 ["Wall", 1750, 370], ["Wall", 1750, 300],]
+                 ]
 
-
-        step_on = [["Water", 800, 250], ["Water", 870, 250],
-                   ["Water", 1000, 250], ["Water", 1070, 250],
-                   ["Water", 1140, 250], ["Water", 1300, 250],]
+        step_on = [["Fire", 1070, 250], ["Fire", 1100, 250]]
 
 
 
